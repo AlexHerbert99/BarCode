@@ -1,4 +1,4 @@
-﻿$("#btnDetalles").click(function (eve) {
+﻿$("#btnDetalle").click(function (eve) {
 
     $("#modal-content").load("/Productos/Details/" + $(this).data("id"));
 

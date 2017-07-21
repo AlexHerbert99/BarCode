@@ -76,10 +76,9 @@
                     <div class="frame">
                         <img src="@Url.Content(item.Foto)" height="130" width="130" />
                         <div>Precio: @string.Format("{0:C}", item.Precio)</div><p></p>
-                        <button id="btnNuevo" class="btn btn-info text-shadow" data-toggle="modal" href="#myModal">Detalle</button> |
+                        <input type="submit" Value="Detalles" class="btn btn-info" onclick="mostrarDetalles()"/>  |
                         <button type="submit" value="Agregar" class="btn btn-success text-shadow">Al Carrito</button>
                     </div>
-
                 </div>
             </div>
         </form>
@@ -119,45 +118,55 @@
 
 <!--Modal-->
 
-<div class="container">
+@*<div class="container">
+    <h2>Activate Modal with JavaScript</h2>
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" id="myBtn">Open Modal</button>
 
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog">
 
+            <!-- Modal content-->
             <div class="modal-content">
-
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Detalles</h4>
+                    <h4 class="modal-title">Modal Header</h4>
                 </div>
-
                 <div class="modal-body">
-                    <p>This is a large modal.</p>
+                    <p>Some text in the modal.</p>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
-
             </div>
+
         </div>
     </div>
-</div>
+</div>*@
 
-<!--References-->
-<div>
-    <link href="~/Content/metro.css" rel="stylesheet">
-    <link href="~/Content/metro-icons.css" rel="stylesheet">
-    <link href="~/Content/metro-responsive.css" rel="stylesheet">
-    <link href="~/Content/metro-schemes.css" rel="stylesheet">
-    <link href="~/Content/docs.css" rel="stylesheet">
-    <link href="~/Content/main.css" rel="stylesheet">
-    <script src="~/Scripts/catalogo.js"></script>
-    <script src="~/Scripts/jquery-2.1.3.min.js"></script>
-    <script src="~/Scripts/metro.js"></script>
-    <script src="~/Scripts/metro.js"></script>
-    <script src="~/Scripts/run_prettify.js"></script>
-</div>
+    <!--References-->
+    <div>
+        <link href="~/Content/metro.css" rel="stylesheet">
+        <link href="~/Content/metro-icons.css" rel="stylesheet">
+        <link href="~/Content/metro-responsive.css" rel="stylesheet">
+        <link href="~/Content/metro-schemes.css" rel="stylesheet">
+        <link href="~/Content/docs.css" rel="stylesheet">
+        <link href="~/Content/main.css" rel="stylesheet">
 
-<footer></footer>
+        <script src="~/Scripts/jquery-2.1.3.min.js"></script>
+        <script src="~/Scripts/metro.js"></script>
+        <script src="~/Scripts/metro.js"></script>
+        <script src="~/Scripts/run_prettify.js"></script>
+    </div>
+
+    @*<script>
+        $(document).ready(function () {
+            $("#myBtn").click(function () {
+                $("#myModal").modal();
+            });
+        });
+    </script>*@
+
+    <footer></footer>
+

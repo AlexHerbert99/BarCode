@@ -63,6 +63,11 @@ namespace barCode.Controllers
             return View(cliente);
         }
 
+
+
+
+
+
         // GET: Clientes/Create
         public ActionResult Create()
         {

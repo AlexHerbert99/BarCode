@@ -20,6 +20,10 @@ namespace barCode.Controllers
             return View(db.Producto.ToList());
         }
 
+
+
+
+
         // GET: Productos/Details/5
         public ActionResult Details(int? id)
         {
@@ -34,6 +38,13 @@ namespace barCode.Controllers
             }
             return View(producto);
         }
+
+
+
+
+
+
+
 
         // GET: Productos/Create
         public ActionResult Create()
