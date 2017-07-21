@@ -44,6 +44,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -52,6 +60,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,22 +130,117 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CarritoController.cs" />
+    <Compile Include="Controllers\CatalogoController.cs" />
+    <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Administradores.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\barCode.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>barCode.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\barCode.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\barCode.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>barCode.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Boleta.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Carrito.cs" />
+    <Compile Include="Models\Categoria.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cliente.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Comuna.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Direccion.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Distribuidor.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HistorialCompras.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MediosdePago.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Producto.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\productoCarrito.cs" />
+    <Compile Include="Models\Region.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagrams.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\diseno.css" />
+    <Content Include="Content\docs.css" />
+    <Content Include="Content\full-slider.css" />
+    <Content Include="Content\main.css" />
+    <Content Include="Content\metro-icons.css" />
+    <Content Include="Content\metro-responsive.css" />
+    <Content Include="Content\metro-rtl.css" />
+    <Content Include="Content\metro-schemes.css" />
+    <Content Include="Content\metro.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\Bottleshot-IPA.png" />
+    <Content Include="Imagenes\Diem-dunkel.jpg" />
+    <Content Include="Imagenes\Leyenda-Golden.jpg" />
+    <Content Include="Imagenes\leyenda-santiago.jpg" />
+    <Content Include="Imagenes\Pinta-Negra - copia.jpg" />
+    <Content Include="Imagenes\Slider1.jpg" />
+    <Content Include="Imagenes\Slider2.jpg" />
+    <Content Include="Imagenes\Slider3.jpg" />
+    <Content Include="Imagenes\Slider4.jpg" />
+    <Content Include="Imagenes\toro-macho.jpg" />
+    <Content Include="Models\barCode.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>barCode.Context.cs</LastGenOutput>
+      <DependentUpon>barCode.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\barCode.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>barCode.edmx</DependentUpon>
+      <LastGenOutput>barCode.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\barCode.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>barCode.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\barCode.edmx.diagram">
+      <DependentUpon>barCode.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Carrito.js" />
+    <Content Include="Scripts\catalogo.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -143,9 +248,12 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Login.js" />
+    <Content Include="Scripts\metro.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\run_prettify.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -161,10 +269,23 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Productos\Create.cshtml" />
+    <Content Include="Views\Productos\Delete.cshtml" />
+    <Content Include="Views\Productos\Details.cshtml" />
+    <Content Include="Views\Productos\Edit.cshtml" />
+    <Content Include="Views\Productos\Index.cshtml" />
+    <Content Include="Views\Clientes\Create.cshtml" />
+    <Content Include="Views\Clientes\Delete.cshtml" />
+    <Content Include="Views\Clientes\Details.cshtml" />
+    <Content Include="Views\Clientes\Edit.cshtml" />
+    <Content Include="Views\Clientes\Index.cshtml" />
+    <Content Include="Views\Clientes\noEncontrado.cshtml" />
+    <Content Include="Views\Clientes\Validar.cshtml" />
+    <Content Include="Views\Carrito\Index.cshtml" />
+    <Content Include="Views\Catalogo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -173,6 +294,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

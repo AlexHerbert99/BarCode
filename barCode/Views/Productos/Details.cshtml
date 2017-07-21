@@ -1,0 +1,90 @@
+﻿@model barCode.Models.Producto
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles</h2>
+
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.IdBoleta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdBoleta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategoria)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCategoria)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Foto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NombreProd)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NombreProd)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Marca)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Marca)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eliminado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eliminado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Al Carrito", "Edit", new { id = Model.IdProducto }) |
+    @Html.ActionLink("Volver", "Index")
+</p>
