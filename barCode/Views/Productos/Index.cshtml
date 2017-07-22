@@ -3,20 +3,37 @@
 @{
     ViewBag.Title = "Index";
 }
-
 <h2>Lista de Productos</h2>
 
-<p>
-    @Html.ActionLink("Agregar", "Create")
-</p>
+<div class="row">
+    <div class="col-md-3">
+        <a href="/Productos/Create" class="btn btn-info">Agregar</a>
+    </div>
+    
+    <div class="col-md-9" align="right">
+        <form action="~/Productos/Buscador">
+            <input type="text" name="nombre" placeholder="Nombre del Producto" class="form-control" />
+            <p></p>
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+<p></p>
+
 <table class="table table-bordered table-hover">
-    <tr>
+    <tr class="panel-title panel-primary">
         @*<th>
             @Html.DisplayNameFor(model => model.IdBoleta)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCategoria)
         </th>*@
+        <th>
+            Nro
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Foto)
         </th>
@@ -26,6 +43,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Marca)
         </th>
+        
         <th>
             @Html.DisplayNameFor(model => model.Stock)
         </th>
@@ -45,10 +63,10 @@
     <tr>
         @*<td>
             @Html.DisplayFor(modelItem => item.IdBoleta)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.IdCategoria)
-        </td>*@
+        </td>
         <td>
             <img src="@Url.Content(item.Foto)" height="100" width="100" />
         </td>
@@ -71,11 +89,15 @@
             @Html.DisplayFor(modelItem => item.Eliminado)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.IdProducto }) |
-            @Html.ActionLink("Detalles", "Details", new { id=item.IdProducto }) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdProducto })
+            @Html.ActionLink("Editar", "Edit", new { id = item.IdProducto }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.IdProducto }) |
+            @Html.ActionLink("Eliminar", "Delete", new { id = item.IdProducto })
         </td>
     </tr>
 }
-
 </table>
+
+@*@for(int i=0; i< ViewBag.Total; i++)
+{
+    <a href="/Producto/Index?pagina=@i">@i</a>
+}*@

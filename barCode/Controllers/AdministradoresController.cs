@@ -10,133 +10,107 @@ using barCode.Models;
 
 namespace barCode.Controllers
 {
-    public class ProductosController : Controller
+    public class AdministradoresController : Controller
     {
         private barCodeEntities db = new barCodeEntities();
 
+        // GET: Administradores
         public ActionResult Index()
         {
-            return View(db.Producto.ToList());
+            return View(db.Administradores.ToList());
         }
 
-        ////GET: Productos
-        //int prodXpag = 3; //Elementos por pagina
-        //public ActionResult Index(int pagina = 1)
-        //{
-        //    decimal numPage = 0;
-        //    decimal regTotales = db.Producto.Count();
-        //    numPage = Math.Ceiling(regTotales / prodXpag);
-
-        //    ViewBag.Total = numPage + 1;
-
-        //    int salto = 0;
-        //    salto = (pagina - 1) * prodXpag;
-
-        //    var p = db.Producto.Include(x=> x.Categoria);
-        //    return View(p.OrderBy(x => x.IdProducto).Skip(salto).Take(prodXpag).ToList());
-        //}
-
-        //BUSCADOR
-        public ActionResult Buscador(string nombre)
-        {
-            var query = db.Producto.Where(x => x.NombreProd.Contains(nombre));
-            return View("Index", query);
-        }
-
-
-
-        // GET: Productos/Details/5
+        // GET: Administradores/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Producto.Find(id);
-            if (producto == null)
+            Administradores administradores = db.Administradores.Find(id);
+            if (administradores == null)
             {
                 return HttpNotFound();
             }
-            return View(producto);
+            return View(administradores);
         }
 
-
-        // GET: Productos/Create
+        // GET: Administradores/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Productos/Create
+        // POST: Administradores/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdProducto,IdBoleta,IdCategoria,Foto,NombreProd,Marca,Stock,Precio,Descripcion,Eliminado")] Producto producto)
+        public ActionResult Create([Bind(Include = "IdAdmin,IdDistribuidor,RutAdm,NombreAdm,ApPatAdm,ApMatAdm,Fono,Usuario,Contrasena")] Administradores administradores)
         {
             if (ModelState.IsValid)
             {
-                db.Producto.Add(producto);
+                db.Administradores.Add(administradores);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(producto);
+            return View(administradores);
         }
 
-        // GET: Productos/Edit/5
+        // GET: Administradores/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Producto.Find(id);
-            if (producto == null)
+            Administradores administradores = db.Administradores.Find(id);
+            if (administradores == null)
             {
                 return HttpNotFound();
             }
-            return View(producto);
+            return View(administradores);
         }
 
-        // POST: Productos/Edit/5
+        // POST: Administradores/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdProducto,IdBoleta,IdCategoria,Foto,NombreProd,Marca,Stock,Precio,Descripcion,Eliminado")] Producto producto)
+        public ActionResult Edit([Bind(Include = "IdAdmin,IdDistribuidor,RutAdm,NombreAdm,ApPatAdm,ApMatAdm,Fono,Usuario,Contrasena")] Administradores administradores)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(producto).State = EntityState.Modified;
+                db.Entry(administradores).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(producto);
+            return View(administradores);
         }
 
-        // GET: Productos/Delete/5
+        // GET: Administradores/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Producto producto = db.Producto.Find(id);
-            if (producto == null)
+            Administradores administradores = db.Administradores.Find(id);
+            if (administradores == null)
             {
                 return HttpNotFound();
             }
-            return View(producto);
+            return View(administradores);
         }
 
-        // POST: Productos/Delete/5
+        // POST: Administradores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Producto producto = db.Producto.Find(id);
-            db.Producto.Remove(producto);
+            Administradores administradores = db.Administradores.Find(id);
+            db.Administradores.Remove(administradores);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

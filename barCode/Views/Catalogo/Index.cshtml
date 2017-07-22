@@ -15,10 +15,11 @@
     }
 
     .pro {
-        width: 280px;
-        height: 250px;
+        width: 250px;
+        height: 300px;
         display: inline-block;
         vertical-align: top;
+        align-items:center;
         display: inline-block;
         text-align: center;
         border-radius: 15px;
@@ -44,6 +45,7 @@
 
         <div class="col-md-8">
             <h4>Las Mejores cervezas Artesanales Nacionales estan con la Teleton.</h4>
+            
         </div>
 
         <div class="align-right col-md-4">
@@ -73,77 +75,24 @@
                         <input type="hidden" name="id" value="@item.IdProducto" />
                     </header>
 
+
                     <div class="frame">
                         <img src="@Url.Content(item.Foto)" height="130" width="130" />
+                        <p>@item.Descripcion</p>
                         <div>Precio: @string.Format("{0:C}", item.Precio)</div><p></p>
-                        <button type="submit" class="btn btn-info" onclick="mostrarDetalles()">Detalles</button>  |
-                        <button type="submit" value="Agregar" class="btn btn-success text-shadow">Al Carrito</button>
+                        <button type="submit" class="btn-xs btn btn-info" onclick="">Detalles</button>  |
+                        <button type="submit" value="Agregar" class="btn-xs btn btn-success text-shadow">Al Carrito</button>                        
                     </div>
                 </div>
             </div>
+        </form>
+        <form name="ejemplo2" action="11-html5-number-input.php" method="POST">           
+            <input type="number" name="edad" min="12" max="36" step="12" required="required">            
         </form>
     </div>
 
 }
 
-<div>
-    @*<script>
-            $(function(){
-
-                $(".button success text-shadow").on("click", function(){
-                    var id = $(this).attr("id");
-                });
-
-                function Agregar(idProducto){
-                        $.ajax({
-                    url: '/Carrito/Agregar',
-                    method: 'get',
-                    data: {id: idProducto},
-
-                    success: function(result){
-                        $("#carrito").html(result);
-                        console.log(result);
-                    },
-                    error: function(a, b, c){
-                        console.log(a);
-                        console.log(b);
-                        console.log(c);
-                    }
-                });
-
-                }
-            });
-        </script>*@
-</div>
-
-<!--Modal-->
-
-@*<div class="container">
-    <h2>Activate Modal with JavaScript</h2>
-    <!-- Trigger the modal with a button -->
-    <button type="button" class="btn btn-info btn-lg" id="myBtn">Open Modal</button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Some text in the modal.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>*@
 
     <!--References-->
     <div>
@@ -160,13 +109,5 @@
         <script src="~/Scripts/run_prettify.js"></script>
     </div>
 
-    @*<script>
-        $(document).ready(function () {
-            $("#myBtn").click(function () {
-                $("#myModal").modal();
-            });
-        });
-    </script>*@
-
-    <footer></footer>
+   <footer></footer>
 

@@ -130,8 +130,10 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdministradoresController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CatalogoController.cs" />
+    <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
@@ -210,15 +212,22 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\Bottleshot-IPA.png" />
+    <Content Include="Imagenes\callecalle.jpg" />
     <Content Include="Imagenes\Diem-dunkel.jpg" />
+    <Content Include="Imagenes\ironmaiden.jpg" />
     <Content Include="Imagenes\Leyenda-Golden.jpg" />
     <Content Include="Imagenes\leyenda-santiago.jpg" />
+    <Content Include="Imagenes\nomade.jpg" />
     <Content Include="Imagenes\Pinta-Negra - copia.jpg" />
+    <Content Include="Imagenes\Quimera.png" />
+    <Content Include="Imagenes\slayerredale.jpg" />
     <Content Include="Imagenes\Slider1.jpg" />
     <Content Include="Imagenes\Slider2.jpg" />
     <Content Include="Imagenes\Slider3.jpg" />
     <Content Include="Imagenes\Slider4.jpg" />
     <Content Include="Imagenes\toro-macho.jpg" />
+    <Content Include="Imagenes\trappe.jpg" />
+    <Content Include="Imagenes\Tubinger-Red-Ale.jpg" />
     <Content Include="Models\barCode.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>barCode.Context.cs</LastGenOutput>
@@ -282,6 +291,16 @@
     <Content Include="Views\Carrito\Index.cshtml" />
     <Content Include="Views\Catalogo\Index.cshtml" />
     <Content Include="Views\Catalogo\mostrarDetalles.cshtml" />
+    <Content Include="Views\Administradores\Create.cshtml" />
+    <Content Include="Views\Administradores\Delete.cshtml" />
+    <Content Include="Views\Administradores\Details.cshtml" />
+    <Content Include="Views\Administradores\Edit.cshtml" />
+    <Content Include="Views\Administradores\Index.cshtml" />
+    <Content Include="Views\Categorias\Create.cshtml" />
+    <Content Include="Views\Categorias\Delete.cshtml" />
+    <Content Include="Views\Categorias\Details.cshtml" />
+    <Content Include="Views\Categorias\Edit.cshtml" />
+    <Content Include="Views\Categorias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

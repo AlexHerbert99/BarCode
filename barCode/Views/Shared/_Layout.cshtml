@@ -27,12 +27,13 @@
                     <li>@Html.ActionLink("Carrito", "Index", "Carrito")</li>
                     <li>@Html.ActionLink("Admins", "Index", "Administradores")</li>
                     <li>@Html.ActionLink("Clientes", "Index", "Clientes")</li>
-                    <li>@Html.ActionLink("Login", "Validar", "Clientes")</li>
+                    <li>@Html.ActionLink("Categoria", "Index", "Categorias")</li>
                 </ul>
                 <div align="right">
                     <p></p>
                     <a class="btn-xs btn-info text-shadow" href="/Clientes/Validar">Iniciar Sesión</a>
                     <a class="btn-xs btn-info text-shadow" href="/Clientes/Create">Registrarse</a>
+                    @Context.User.Identity.Name
 
                 </div>
             </div>
