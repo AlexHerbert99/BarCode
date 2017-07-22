@@ -41,7 +41,7 @@ namespace barCode.Controllers
             var query = db.Producto.Where(x => x.NombreProd.Contains(nombre));
             decimal count = query.Count();
             decimal total = Math.Ceiling(count / itemXpag);
-            return View("Index", query);
+            return View("Index", query.OrderBy(x=> x.IdProducto).Skip(0).Take(itemXpag));
         }
 
 
