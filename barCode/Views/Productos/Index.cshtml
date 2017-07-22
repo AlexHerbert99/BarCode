@@ -97,7 +97,7 @@
 }
 </table>
 
-@*@for(int i=0; i< ViewBag.Total; i++)
+@for(int i=1; i< ViewBag.Total; i++)
 {
-    <a href="/Producto/Index?pagina=@i">@i</a>
-}*@
+    <a href="~/Productos/Index?pagina=@i">@i</a>
+}

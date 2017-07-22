@@ -14,27 +14,26 @@ namespace barCode.Controllers
     {
         private barCodeEntities db = new barCodeEntities();
 
-        public ActionResult Index()
-        {
-            return View(db.Producto.ToList());
-        }
-
-        ////GET: Productos
-        //int prodXpag = 3; //Elementos por pagina
-        //public ActionResult Index(int pagina = 1)
+        //public ActionResult Index()
         //{
-        //    decimal numPage = 0;
-        //    decimal regTotales = db.Producto.Count();
-        //    numPage = Math.Ceiling(regTotales / prodXpag);
-
-        //    ViewBag.Total = numPage + 1;
-
-        //    int salto = 0;
-        //    salto = (pagina - 1) * prodXpag;
-
-        //    var p = db.Producto.Include(x=> x.Categoria);
-        //    return View(p.OrderBy(x => x.IdProducto).Skip(salto).Take(prodXpag).ToList());
+        //    return View(db.Producto.ToList());
         //}
+
+        //GET: Productos
+
+        int itemXpag = 3; //Elementos por pagina
+
+        public ActionResult Index(int pagina = 1)
+        {
+            decimal count = db.Producto.Count();
+            decimal total = Math.Ceiling(count / itemXpag);
+
+            ViewBag.Total = total + 1;
+            int salto = (pagina - 1) * itemXpag;
+
+            var producto = db.Producto.OrderBy(x=> x.IdProducto).Skip(salto).Take(itemXpag);
+            return View(producto.ToList());
+        }
 
         //BUSCADOR
         public ActionResult Buscador(string nombre)
