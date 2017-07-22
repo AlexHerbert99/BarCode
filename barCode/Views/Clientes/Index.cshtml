@@ -5,10 +5,21 @@
 }
 
 <h2>Lista de Clientes</h2>
+<div class="row">
+    <div class="col-md-3">
+        <a href="/Clientes/Create" class="btn btn-info">Agregar</a>
+    </div>
 
-<p>
-    @Html.ActionLink("Agregar", "Create")
-</p>
+    <div class="col-md-9" align="right">
+        <form action="~/Clientes/Buscador">
+            <input type="text" name="nombre" placeholder="Nombre del Producto" class="form-control" />
+            <p></p>
+            <input type="submit" value="Buscar" class="btn btn-info" />
+        </form>
+    </div>
+
+</div>
+<p></p>
 <table class="table table-bordered table-hover">
     <tr>
         <th>
@@ -67,3 +78,8 @@
 }
 
 </table>
+
+@for (int i = 1; i < ViewBag.Total; i++)
+{
+    <a href="~/Clientes/Index?pagina=@i">@i</a>
+}

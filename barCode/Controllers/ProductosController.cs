@@ -39,6 +39,8 @@ namespace barCode.Controllers
         public ActionResult Buscador(string nombre)
         {
             var query = db.Producto.Where(x => x.NombreProd.Contains(nombre));
+            decimal count = query.Count();
+            decimal total = Math.Ceiling(count / itemXpag);
             return View("Index", query);
         }
 
