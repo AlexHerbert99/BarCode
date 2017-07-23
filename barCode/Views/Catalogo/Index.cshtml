@@ -95,6 +95,10 @@
 
 }
 
+@for (int i=1; i < ViewBag.Total; i++)
+{
+    <a href="~/Catalogo/Index?pagina=@i">@i</a>
+}
 
     <!--References-->
     <div>
@@ -111,5 +115,6 @@
         <script src="~/Scripts/run_prettify.js"></script>
     </div>
 
-   <footer></footer>
+
+
 

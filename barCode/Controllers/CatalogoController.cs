@@ -13,12 +13,21 @@ namespace barCode.Controllers
 
         barCodeEntities db = new barCodeEntities();
 
-
+        int artXpag = 3;
         // GET: Catalogo
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 1)
         {
             List<Producto> x = db.Producto.ToList();
-            return View(x);
+
+            decimal count = db.Producto.Count();
+            decimal total = Math.Ceiling(count / artXpag);
+
+            ViewBag.Total = total + 1;
+            int salto = (pagina - 1) * artXpag;
+
+            var pro = db.Producto.OrderBy(z=> z.IdProducto).Skip(salto).Take(artXpag);
+
+            return View(pro.ToList());
         }
 
     }
