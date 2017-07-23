@@ -290,7 +290,6 @@
     <Content Include="Views\Clientes\Validar.cshtml" />
     <Content Include="Views\Carrito\Index.cshtml" />
     <Content Include="Views\Catalogo\Index.cshtml" />
-    <Content Include="Views\Catalogo\mostrarDetalles.cshtml" />
     <Content Include="Views\Administradores\Create.cshtml" />
     <Content Include="Views\Administradores\Delete.cshtml" />
     <Content Include="Views\Administradores\Details.cshtml" />
