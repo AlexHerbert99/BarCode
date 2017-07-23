@@ -64,11 +64,10 @@ namespace barCode.Controllers
 
         public ActionResult noEncontrado()
         {
-            ViewBag.Error = "Datos Incorrectos";
+            ViewBag.Error = "No te haz registrado?";
             return View();
         }
-
-
+        
 
         // GET: Clientes/Details/5
         public ActionResult Details(int? id)
@@ -84,11 +83,6 @@ namespace barCode.Controllers
             }
             return View(cliente);
         }
-
-
-
-
-
 
         // GET: Clientes/Create
         public ActionResult Create()
