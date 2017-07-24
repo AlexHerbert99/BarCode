@@ -30,5 +30,12 @@ namespace barCode.Controllers
             return View(pro.ToList());
         }
 
+        public ActionResult Buscar(string Nombre)
+
+        {
+            var Pilsen = db.Producto.Where(x => x.NombreProd.Contains(Nombre));
+            return View("Catalogo", Pilsen);
+        }
+
     }
 }
