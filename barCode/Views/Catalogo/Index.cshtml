@@ -49,7 +49,7 @@
 
         <div class="align-right col-md-4">
 
-            <form action="http://localhost:54140/Carrito/Buscador">
+            <form action="http://localhost:54140/Catalogo/Buscador">
                 <input name="Nombre" id="Nombre" />
                 <input type="submit" value="Buscar" class="btn btn-info" />
             </form>
@@ -57,7 +57,7 @@
         </div>
     </div>
 </div>
-
+<p>Todos los productos son con despacho gratis por tiempo limitado !!</p>
 <hr class="bg-green">
 
 
@@ -70,7 +70,7 @@
             <div>
                 <div class="">
                     <header>
-                        <h5>@item.NombreProd</h5>
+                        <h5 class="text-shadow text-bold">@item.NombreProd</h5>
                         <input type="hidden" name="id" value="@item.IdProducto" />
                         <button type="submit" value="Agregar" class="btn-xs btn btn-success text-shadow">Al Carrito</button>
                         <img src="@Url.Content(item.Foto)" height="130" width="130" />
@@ -80,15 +80,14 @@
         </form>
 
         <div class="">            
-            <p>@item.Descripcion</p>
-            <div>Precio: @string.Format("{0:C}", item.Precio)</div><p></p>           
+            <p class="text-bold">@item.Descripcion</p>
+            <div><p class="text-bold text-info">@string.Format("{0:C}", item.Precio)</p></div>          
         </div>          
         
         <div class="row">
             <p>Seleccionar Cantidad</p>
-            <form name="ejemplo2" action="11-html5-number-input.php" method="POST">
-                
-                <input type="number" name="edad" min="12" max="36" step="12" required="required">
+            <form name="Selector" action="11-html5-number-input.php" method="POST">                
+                <input type="number" name="cant" min="6" max="36" step="6" required="required">
             </form>
         </div>
     </div>
