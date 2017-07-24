@@ -16,6 +16,6 @@ namespace barCode.Models
     {
         public int IdRegistro { get; set; }
         public Nullable<int> IdCliente { get; set; }
-        public string FechaCompra { get; set; }
+        public System.DateTime FechaCompra { get; set; }
     }
 }

@@ -226,7 +226,7 @@
           </Key>
           <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCliente" Type="Int32" />
-          <Property Name="FechaCompra" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="MediosdePago">
           <Key>
