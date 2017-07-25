@@ -13,10 +13,10 @@ namespace barCode.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class barCodeEntities : DbContext
+    public partial class barCodeEntities1 : DbContext
     {
-        public barCodeEntities()
-            : base("name=barCodeEntities")
+        public barCodeEntities1()
+            : base("name=barCodeEntities1")
         {
         }
     

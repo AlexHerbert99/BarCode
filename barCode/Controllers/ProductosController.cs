@@ -12,12 +12,7 @@ namespace barCode.Controllers
 {
     public class ProductosController : Controller
     {
-        private barCodeEntities db = new barCodeEntities();
-
-        //public ActionResult Index()
-        //{
-        //    return View(db.Producto.ToList());
-        //}
+        private barCodeEntities1 db = new barCodeEntities1();
 
         //GET: Productos
 
@@ -68,9 +63,7 @@ namespace barCode.Controllers
             return View();
         }
 
-        // POST: Productos/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdProducto,IdBoleta,IdCategoria,Foto,NombreProd,Marca,Stock,Precio,Descripcion,Eliminado")] Producto producto)
@@ -100,9 +93,7 @@ namespace barCode.Controllers
             return View(producto);
         }
 
-        // POST: Productos/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdProducto,IdBoleta,IdCategoria,Foto,NombreProd,Marca,Stock,Precio,Descripcion,Eliminado")] Producto producto)

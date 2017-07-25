@@ -144,6 +144,7 @@
     <Compile Include="Controllers\CategoriasController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -238,8 +239,8 @@
     <Content Include="Imagenes\Tubinger-Red-Ale.jpg" />
     <Content Include="Models\barCode.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>barCode.Context.cs</LastGenOutput>
       <DependentUpon>barCode.edmx</DependentUpon>
+      <LastGenOutput>barCode.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\barCode.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -309,6 +310,8 @@
     <Content Include="Views\Categorias\Edit.cshtml" />
     <Content Include="Views\Categorias\Index.cshtml" />
     <Content Include="Views\Carrito\finalizarCompra.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

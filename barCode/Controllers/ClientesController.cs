@@ -12,7 +12,7 @@ namespace barCode.Controllers
 {
     public class ClientesController : Controller
     {
-        private barCodeEntities db = new barCodeEntities();
+        private barCodeEntities1 db = new barCodeEntities1();
 
         int itemXpag = 3;
         // GET: Clientes

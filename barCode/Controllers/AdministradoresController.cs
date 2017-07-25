@@ -12,7 +12,7 @@ namespace barCode.Controllers
 {
     public class AdministradoresController : Controller
     {
-        private barCodeEntities db = new barCodeEntities();
+        private barCodeEntities1 db = new barCodeEntities1();
 
         // GET: Administradores
         public ActionResult Index()

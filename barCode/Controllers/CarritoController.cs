@@ -10,7 +10,7 @@ namespace barCode.Controllers
     public class CarritoController : Controller
 
     {
-        barCodeEntities db = new barCodeEntities();
+        barCodeEntities1 db = new barCodeEntities1();
         List<Producto> carro = new List<Producto>();
 
         // GET: Carrito

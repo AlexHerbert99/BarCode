@@ -85,7 +85,7 @@
           </Key>
           <Property Name="IdRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdCliente" Type="int" />
-          <Property Name="FechaCompra" Type="varchar" MaxLength="50" />
+          <Property Name="FechaCompra" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="MediosdePago">
           <Key>
@@ -226,7 +226,7 @@
           </Key>
           <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdCliente" Type="Int32" />
-          <Property Name="FechaCompra" Type="DateTime" Nullable="false" />
+          <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="MediosdePago">
           <Key>
@@ -268,7 +268,7 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityContainer Name="barCodeEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="barCodeEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administradores" EntityType="Self.Administradores" />
           <EntitySet Name="Boleta" EntityType="Self.Boleta" />
           <EntitySet Name="Categoria" EntityType="Self.Categoria" />
@@ -287,7 +287,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="barCodeModelStoreContainer" CdmEntityContainer="barCodeEntities">
+        <EntityContainerMapping StorageEntityContainer="barCodeModelStoreContainer" CdmEntityContainer="barCodeEntities1">
           <EntitySetMapping Name="Administradores">
             <EntityTypeMapping TypeName="barCodeModel.Administradores">
               <MappingFragment StoreEntitySet="Administradores">

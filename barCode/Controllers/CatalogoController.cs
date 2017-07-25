@@ -11,7 +11,7 @@ namespace barCode.Controllers
     public class CatalogoController : Controller
     {
 
-        barCodeEntities db = new barCodeEntities();
+        barCodeEntities1 db = new barCodeEntities1();
 
         int artXpag = 3;
         // GET: Catalogo
