@@ -12,7 +12,7 @@ namespace barCode.Controllers
 {
     public class CategoriasController : Controller
     {
-        private barCodeEntities1 db = new barCodeEntities1();
+        private barCodeEntities db = new barCodeEntities();
 
         // GET: Categorias
         public ActionResult Index()

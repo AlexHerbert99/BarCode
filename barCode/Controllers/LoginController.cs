@@ -10,7 +10,7 @@ namespace barCode.Controllers
 {
     public class LoginController : Controller
     {
-        barCodeEntities1 db = new barCodeEntities1();
+        barCodeEntities db = new barCodeEntities();
 
         public ActionResult Index()
         {
@@ -19,7 +19,7 @@ namespace barCode.Controllers
 
         public ActionResult Login(string user, string pass)
         {
-            Models.Cliente us = db.Cliente.FirstOrDefault(x => x.User == user & x.Pass == pass);
+            Models.Cliente us = db.Cliente.FirstOrDefault(x => x.Rut == user & x.Pass == pass);
             if (us != null)
             {
                 var ticket = new FormsAuthenticationTicket(
@@ -37,14 +37,19 @@ namespace barCode.Controllers
             }
             else
             {
-                return Redirect("Index");
+                return Redirect("noEncontrado");
             }
         }
+
+        public ActionResult noEncontrado()
+        {
+            return View();
+        } 
 
         public ActionResult cerrarSesion()
         {
             FormsAuthentication.SignOut();
-            return View("~/Catalogo/Index");
+            return View("cerrarSesion");
         }
 
     }

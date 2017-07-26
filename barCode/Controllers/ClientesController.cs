@@ -12,15 +12,9 @@ namespace barCode.Controllers
 {
     public class ClientesController : Controller
     {
-        private barCodeEntities1 db = new barCodeEntities1();
+        private barCodeEntities db = new barCodeEntities();
 
         int itemXpag = 3;
-        // GET: Clientes
-        //public ActionResult Index()
-        //{
-        //    return View(db.Cliente.ToList());
-        //}
-
         public ActionResult Index(int pagina = 1)
         {
             decimal count = db.Cliente.Count();
@@ -41,33 +35,6 @@ namespace barCode.Controllers
             decimal total = Math.Ceiling(count / itemXpag);
             return View("Index", query);
         }
-
-        //LOGIN
-        public ActionResult Validar()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Validar(string user, string password)
-        {
-            Models.Cliente us = db.Cliente.FirstOrDefault(x => x.User == user & x.Pass == password);
-            if (us != null)
-            {
-                return RedirectToAction("Index", "Catalogo");
-            }
-            else
-            {
-                return RedirectToAction("noEncontrado", "Clientes");
-            }
-        }
-
-        public ActionResult noEncontrado()
-        {
-            ViewBag.Error = "No te haz registrado?";
-            return View();
-        }
-        
 
         // GET: Clientes/Details/5
         public ActionResult Details(int? id)
@@ -90,9 +57,7 @@ namespace barCode.Controllers
             return View();
         }
 
-        // POST: Clientes/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
@@ -122,9 +87,6 @@ namespace barCode.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)

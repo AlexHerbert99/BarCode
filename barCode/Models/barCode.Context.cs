@@ -13,10 +13,10 @@ namespace barCode.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class barCodeEntities1 : DbContext
+    public partial class barCodeEntities : DbContext
     {
-        public barCodeEntities1()
-            : base("name=barCodeEntities1")
+        public barCodeEntities()
+            : base("name=barCodeEntities")
         {
         }
     
@@ -36,6 +36,5 @@ namespace barCode.Models
         public virtual DbSet<MediosdePago> MediosdePago { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Region> Region { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

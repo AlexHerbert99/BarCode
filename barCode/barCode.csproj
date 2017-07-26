@@ -199,9 +199,6 @@
     <Compile Include="Models\Region.cs">
       <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagrams.cs">
-      <DependentUpon>barCode.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -257,8 +254,6 @@
       <DependentUpon>barCode.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\Carrito.js" />
-    <Content Include="Scripts\Catalogo.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -295,8 +290,6 @@
     <Content Include="Views\Clientes\Details.cshtml" />
     <Content Include="Views\Clientes\Edit.cshtml" />
     <Content Include="Views\Clientes\Index.cshtml" />
-    <Content Include="Views\Clientes\noEncontrado.cshtml" />
-    <Content Include="Views\Clientes\Validar.cshtml" />
     <Content Include="Views\Carrito\Index.cshtml" />
     <Content Include="Views\Catalogo\Index.cshtml" />
     <Content Include="Views\Administradores\Create.cshtml" />
@@ -312,6 +305,9 @@
     <Content Include="Views\Carrito\finalizarCompra.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\cerrarSesion.cshtml" />
+    <Content Include="Views\Catalogo\Details.cshtml" />
+    <Content Include="Views\Login\noEncontrado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
