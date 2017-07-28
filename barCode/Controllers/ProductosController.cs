@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using barCode.Models;
+using System.IO;
 
 namespace barCode.Controllers
 {
@@ -39,7 +40,34 @@ namespace barCode.Controllers
             return View("Index", query.OrderBy(x=> x.IdProducto).Skip(0).Take(itemXpag));
         }
 
+        //IMAGEN
+        [HttpPost]
+        public ActionResult agregar(Producto imageModel)
+        {
+            string fileName = Path.GetFileNameWithoutExtension(imageModel.imageFile.FileName);
+            string extension = Path.GetExtension(imageModel.imageFile.FileName);
+            fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+            imageModel.Foto = "~/Imagenes/" + fileName;
 
+            fileName = Path.Combine(Server.MapPath("~/Imagenes/"), fileName);
+            imageModel.imageFile.SaveAs(fileName);
+            {
+                db.Producto.Add(imageModel);
+                db.SaveChanges();
+            }
+            ModelState.Clear();
+            return View("Index");
+        }
+
+        [HttpGet]
+        public ActionResult ver(int id)
+        {
+            Producto imageModel = new Producto();
+            {
+                imageModel = db.Producto.Where(x => x.IdProducto == id).FirstOrDefault();
+            }
+            return View(imageModel);
+        }
 
         // GET: Productos/Details/5
         public ActionResult Details(int? id)

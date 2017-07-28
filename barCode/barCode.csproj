@@ -306,7 +306,6 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\cerrarSesion.cshtml" />
-    <Content Include="Views\Catalogo\Details.cshtml" />
     <Content Include="Views\Login\noEncontrado.cshtml" />
   </ItemGroup>
   <ItemGroup>

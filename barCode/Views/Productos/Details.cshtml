@@ -12,7 +12,7 @@
     <dl class="dl-horizontal">
         
         <dt>@Html.DisplayNameFor(model => model.Foto)</dt>
-        <dd>@Html.DisplayFor(model => model.Foto)</dd>
+        <dd><img src="@Html.DisplayFor(model => model.Foto)"/></dd>
 
         <dt>@Html.DisplayNameFor(model => model.NombreProd)</dt>
         <dd>@Html.DisplayFor(model => model.NombreProd)</dd>
@@ -29,6 +29,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Al Carrito", "Edit", new { id = Model.IdProducto }) |
-    @Html.ActionLink("Volver", "Index")
+    
+    @Html.ActionLink("Volver", "Index", "Catalogo")
 </p>

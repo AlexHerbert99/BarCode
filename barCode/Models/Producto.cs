@@ -11,7 +11,8 @@ namespace barCode.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Web;
+
     public partial class Producto
     {
         public int cantidad = 1;
@@ -27,5 +28,8 @@ namespace barCode.Models
         public int Precio { get; set; }
         public string Descripcion { get; set; }
         public Nullable<bool> Eliminado { get; set; }
+        
+
+        public HttpPostedFileBase imageFile { get; set; }
     }
 }
