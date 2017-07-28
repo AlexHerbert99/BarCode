@@ -18,9 +18,11 @@ namespace barCode.Models
         public int cantidad = 1;
         public int montoTotal = 0;
 
+        public HttpPostedFileBase imageFile { get; set; }
+
         public int IdProducto { get; set; }
         public Nullable<int> IdBoleta { get; set; }
-        public Nullable<int> IdCategoria { get; set; }
+        public string IdCategoria { get; set; }
         public string Foto { get; set; }
         public string NombreProd { get; set; }
         public string Marca { get; set; }
@@ -28,8 +30,5 @@ namespace barCode.Models
         public int Precio { get; set; }
         public string Descripcion { get; set; }
         public Nullable<bool> Eliminado { get; set; }
-        
-
-        public HttpPostedFileBase imageFile { get; set; }
     }
 }

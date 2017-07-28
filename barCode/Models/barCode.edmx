@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="barCodeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="barCodeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Administradores">
           <Key>
             <PropertyRef Name="IdAdmin" />
@@ -37,8 +37,7 @@
           <Key>
             <PropertyRef Name="IdCategoria" />
           </Key>
-          <Property Name="IdCategoria" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Categoria" Type="varchar" MaxLength="50" />
+          <Property Name="IdCategoria" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -101,7 +100,7 @@
           </Key>
           <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdBoleta" Type="int" />
-          <Property Name="IdCategoria" Type="int" />
+          <Property Name="IdCategoria" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Foto" Type="text" />
           <Property Name="NombreProd" Type="varchar" MaxLength="50" />
           <Property Name="Marca" Type="varchar" MaxLength="50" />
@@ -130,8 +129,7 @@
           <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="barCodeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -162,13 +160,6 @@
           <Property Name="Fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="Despachado" Type="Boolean" />
           <Property Name="Detalle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="Categoria">
-          <Key>
-            <PropertyRef Name="IdCategoria" />
-          </Key>
-          <Property Name="IdCategoria" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Categoria1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Cliente">
           <Key>
@@ -225,21 +216,6 @@
           <Property Name="IdBoleta" Type="Int32" Nullable="false" />
           <Property Name="MedioPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
-        <EntityType Name="Producto">
-          <Key>
-            <PropertyRef Name="IdProducto" />
-          </Key>
-          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdBoleta" Type="Int32" />
-          <Property Name="IdCategoria" Type="Int32" />
-          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="NombreProd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Stock" Type="Int32" />
-          <Property Name="Precio" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Eliminado" Type="Boolean" />
-        </EntityType>
         <EntityType Name="Region">
           <Key>
             <PropertyRef Name="IdRegion" />
@@ -250,16 +226,37 @@
         <EntityContainer Name="barCodeEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Administradores" EntityType="Self.Administradores" />
           <EntitySet Name="Boleta" EntityType="Self.Boleta" />
-          <EntitySet Name="Categoria" EntityType="Self.Categoria" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
           <EntitySet Name="Comuna" EntityType="Self.Comuna" />
           <EntitySet Name="Direccion" EntityType="Self.Direccion" />
           <EntitySet Name="Distribuidor" EntityType="Self.Distribuidor" />
           <EntitySet Name="HistorialCompras" EntityType="Self.HistorialCompras" />
           <EntitySet Name="MediosdePago" EntityType="Self.MediosdePago" />
-          <EntitySet Name="Producto" EntityType="Self.Producto" />
           <EntitySet Name="Region" EntityType="Self.Region" />
+          <EntitySet Name="Producto" EntityType="barCodeModel.Producto" />
+          <EntitySet Name="Categoria" EntityType="barCodeModel.Categoria" />
         </EntityContainer>
+        <EntityType Name="Producto">
+          <Key>
+            <PropertyRef Name="IdProducto" />
+          </Key>
+          <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdBoleta" Type="Int32" />
+          <Property Name="IdCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="NombreProd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Stock" Type="Int32" />
+          <Property Name="Precio" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Eliminado" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Categoria">
+          <Key>
+            <PropertyRef Name="IdCategoria" />
+          </Key>
+          <Property Name="IdCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -293,14 +290,6 @@
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Despachado" ColumnName="Despachado" />
                 <ScalarProperty Name="Detalle" ColumnName="Detalle" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categoria">
-            <EntityTypeMapping TypeName="barCodeModel.Categoria">
-              <MappingFragment StoreEntitySet="Categoria">
-                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
-                <ScalarProperty Name="Categoria1" ColumnName="Categoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -365,27 +354,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Producto">
-            <EntityTypeMapping TypeName="barCodeModel.Producto">
-              <MappingFragment StoreEntitySet="Producto">
-                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
-                <ScalarProperty Name="IdBoleta" ColumnName="IdBoleta" />
-                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
-                <ScalarProperty Name="Foto" ColumnName="Foto" />
-                <ScalarProperty Name="NombreProd" ColumnName="NombreProd" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Stock" ColumnName="Stock" />
-                <ScalarProperty Name="Precio" ColumnName="Precio" />
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Region">
             <EntityTypeMapping TypeName="barCodeModel.Region">
               <MappingFragment StoreEntitySet="Region">
                 <ScalarProperty Name="IdRegion" ColumnName="IdRegion" />
                 <ScalarProperty Name="Region1" ColumnName="Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Producto">
+            <EntityTypeMapping TypeName="barCodeModel.Producto">
+              <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Stock" ColumnName="Stock" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="NombreProd" ColumnName="NombreProd" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
+                <ScalarProperty Name="IdBoleta" ColumnName="IdBoleta" />
+                <ScalarProperty Name="IdProducto" ColumnName="IdProducto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categoria">
+            <EntityTypeMapping TypeName="barCodeModel.Categoria">
+              <MappingFragment StoreEntitySet="Categoria">
+                <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

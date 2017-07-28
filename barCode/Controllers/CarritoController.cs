@@ -68,6 +68,12 @@ namespace barCode.Controllers
             var Birra = db.Producto.Where(x => x.NombreProd.Contains(Nombre));
             return View("Carrito", Birra);
         }
+
+        public ActionResult cancelarCarrito()
+        {
+            Session["carro"] = null;
+            return View("Index");
+        }
  
     }
 }

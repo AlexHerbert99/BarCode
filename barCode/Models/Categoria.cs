@@ -14,7 +14,6 @@ namespace barCode.Models
     
     public partial class Categoria
     {
-        public int IdCategoria { get; set; }
-        public string Categoria1 { get; set; }
+        public string IdCategoria { get; set; }
     }
 }
