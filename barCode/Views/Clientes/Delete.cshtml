@@ -20,6 +20,14 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Dv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dv)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Nombres)
         </dt>
 
@@ -73,8 +81,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-            @Html.ActionLink("Volver", "Index")
+            <input type="submit" value="Eliminar" class="btn btn-info" /> |
+            <a href="/Clientes" class="btn btn-info">Volver</a>
         </div>
     }
 </div>

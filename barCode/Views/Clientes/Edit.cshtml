@@ -4,14 +4,13 @@
     ViewBag.Title = "Edit";
 }
 
-<h2 style="color:white">Editar Cliente</h2>
-
+<h2 style="color:white">Editar</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal" style="color:white">
+    <div class="form-horizontal">
         <h4 style="color:white">Cliente</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -26,6 +25,14 @@
         </div>
 
         <div class="form-group" style="color:white">
+            @Html.LabelFor(model => model.Dv, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Dv, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Dv, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group" style="color:white">
             @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "form-control" } })
@@ -34,7 +41,7 @@
         </div>
 
         <div class="form-group" style="color:white">
-            @Html.LabelFor(model => model.ApPaterno,"Apellido Paterno", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ApPaterno, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ApPaterno, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ApPaterno, "", new { @class = "text-danger" })
@@ -42,7 +49,7 @@
         </div>
 
         <div class="form-group" style="color:white">
-            @Html.LabelFor(model => model.ApMaterno, "Apellido Materno", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ApMaterno, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.ApMaterno, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.ApMaterno, "", new { @class = "text-danger" })
@@ -57,16 +64,16 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.User, "Usuario", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group" style="color:white">
+            @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Pass, "Contraseña", htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="form-group" style="color:white">
+            @Html.LabelFor(model => model.Pass, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Pass, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Pass, "", new { @class = "text-danger" })
@@ -75,7 +82,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Guardar" class="btn btn-info text-shadow" />
+                <input type="submit" value="Guardar" class="btn btn-info" />
             </div>
         </div>
     </div>
@@ -84,7 +91,3 @@
 <div>
     @Html.ActionLink("Volver", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

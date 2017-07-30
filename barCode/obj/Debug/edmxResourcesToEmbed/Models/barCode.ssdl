@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="barCodeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administradores">
+    <Key>
+      <PropertyRef Name="IdAdmin" />
+    </Key>
+    <Property Name="IdAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDistribuidor" Type="int" />
+    <Property Name="RutAdm" Type="varchar" MaxLength="20" />
+    <Property Name="NombreAdm" Type="varchar" MaxLength="50" />
+    <Property Name="ApPatAdm" Type="varchar" MaxLength="50" />
+    <Property Name="ApMatAdm" Type="varchar" MaxLength="50" />
+    <Property Name="Fono" Type="varchar" MaxLength="50" />
+    <Property Name="Usuario" Type="varchar" MaxLength="20" />
+    <Property Name="Contrasena" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Boleta">
+    <Key>
+      <PropertyRef Name="IdBoleta" />
+    </Key>
+    <Property Name="IdBoleta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRegistro" Type="int" Nullable="false" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="IdDistribuidor" Type="int" />
+    <Property Name="NroBoleta" Type="int" />
+    <Property Name="Total" Type="int" />
+    <Property Name="Fecha" Type="varchar" MaxLength="20" />
+    <Property Name="Despachado" Type="bit" />
+    <Property Name="Detalle" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rut" Type="int" />
+    <Property Name="Dv" Type="int" />
+    <Property Name="Nombres" Type="varchar" MaxLength="50" />
+    <Property Name="ApPaterno" Type="varchar" MaxLength="50" />
+    <Property Name="ApMaterno" Type="varchar" MaxLength="50" />
+    <Property Name="Telefono" Type="varchar" MaxLength="50" />
+    <Property Name="User" Type="varchar" MaxLength="50" />
+    <Property Name="Pass" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Comuna">
+    <Key>
+      <PropertyRef Name="IdComuna" />
+    </Key>
+    <Property Name="IdComuna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdRegion" Type="int" Nullable="false" />
+    <Property Name="Comuna" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Direccion">
+    <Key>
+      <PropertyRef Name="IdDireccion" />
+    </Key>
+    <Property Name="IdDireccion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdDistribuidor" Type="int" />
+    <Property Name="IdComuna" Type="int" Nullable="false" />
+    <Property Name="IdCliente" Type="int" Nullable="false" />
+    <Property Name="Direccion" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Distribuidor">
+    <Key>
+      <PropertyRef Name="IdDistribuidor" />
+    </Key>
+    <Property Name="IdDistribuidor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Distribuidor" Type="varchar" MaxLength="50" />
+    <Property Name="Comentarios" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="HistorialCompras">
+    <Key>
+      <PropertyRef Name="IdRegistro" />
+    </Key>
+    <Property Name="IdRegistro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdCliente" Type="int" />
+    <Property Name="FechaCompra" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MediosdePago">
+    <Key>
+      <PropertyRef Name="IdPago" />
+    </Key>
+    <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdBoleta" Type="int" Nullable="false" />
+    <Property Name="MedioPago" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Producto">
+    <Key>
+      <PropertyRef Name="IdProducto" />
+    </Key>
+    <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdBoleta" Type="int" />
+    <Property Name="IdCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Foto" Type="text" />
+    <Property Name="NombreProd" Type="varchar" MaxLength="50" />
+    <Property Name="Marca" Type="varchar" MaxLength="50" />
+    <Property Name="Stock" Type="int" />
+    <Property Name="Precio" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="Eliminado" Type="bit" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="IdRegion" />
+    </Key>
+    <Property Name="IdRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Region" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="barCodeModelStoreContainer">
+    <EntitySet Name="Administradores" EntityType="Self.Administradores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Boleta" EntityType="Self.Boleta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Comuna" EntityType="Self.Comuna" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Distribuidor" EntityType="Self.Distribuidor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HistorialCompras" EntityType="Self.HistorialCompras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MediosdePago" EntityType="Self.MediosdePago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

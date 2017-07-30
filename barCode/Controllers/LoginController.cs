@@ -19,7 +19,7 @@ namespace barCode.Controllers
 
         public ActionResult Login(string user, string pass)
         {
-            Models.Cliente us = db.Cliente.FirstOrDefault(x => x.Rut == user & x.Pass == pass);
+            Models.Cliente us = db.Cliente.FirstOrDefault(x => x.User == user & x.Pass == pass);
             if (us != null)
             {
                 var ticket = new FormsAuthenticationTicket(

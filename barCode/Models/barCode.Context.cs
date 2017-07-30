@@ -27,7 +27,6 @@ namespace barCode.Models
     
         public virtual DbSet<Administradores> Administradores { get; set; }
         public virtual DbSet<Boleta> Boleta { get; set; }
-        public virtual DbSet<Cliente> Cliente { get; set; }
         public virtual DbSet<Comuna> Comuna { get; set; }
         public virtual DbSet<Direccion> Direccion { get; set; }
         public virtual DbSet<Distribuidor> Distribuidor { get; set; }
@@ -36,5 +35,6 @@ namespace barCode.Models
         public virtual DbSet<Region> Region { get; set; }
         public virtual DbSet<Producto> Producto { get; set; }
         public virtual DbSet<Categoria> Categoria { get; set; }
+        public virtual DbSet<Cliente> Cliente { get; set; }
     }
 }

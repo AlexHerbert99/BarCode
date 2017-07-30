@@ -36,6 +36,8 @@ namespace barCode.Controllers
             return View("Index", query);
         }
 
+
+
         // GET: Clientes/Details/5
         public ActionResult Details(int? id)
         {
@@ -57,10 +59,12 @@ namespace barCode.Controllers
             return View();
         }
 
-
+        // POST: Clientes/Create
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
+        public ActionResult Create([Bind(Include = "IdCliente,Rut,Dv,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -87,9 +91,12 @@ namespace barCode.Controllers
             return View(cliente);
         }
 
+        // POST: Clientes/Edit/5
+        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
+        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "IdCliente,Rut,Dv,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
