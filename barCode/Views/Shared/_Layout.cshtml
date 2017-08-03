@@ -56,7 +56,8 @@
                     else
                     {
                         <a class="text-info">@Html.ActionLink("Hola " + Session["NomUsuario"] + "!!", "Login") |</a>
-                        <a class="text-info">@Html.ActionLink("Cerrar Sesion", "cerrarSesion", "Login")</a>
+                        <a class="text-info" href="/Login/cerrarSesion">Cerrar Sesion</a>                        
+                    
                     }
 
                 </div>
