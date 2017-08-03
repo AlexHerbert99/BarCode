@@ -13,7 +13,7 @@ namespace barCode.Controllers
 
         barCodeEntities db = new barCodeEntities();
 
-        int artXpag = 3;
+        int artXpag = 4;
         // GET: Catalogo
         public ActionResult Index(int pagina = 1)
         {
