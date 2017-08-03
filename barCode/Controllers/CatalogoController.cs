@@ -30,11 +30,13 @@ namespace barCode.Controllers
             return View(pro.ToList());
         }
 
-        public ActionResult Buscar(string Nombre)
-
+        //BUSCADOR
+        public ActionResult Buscador(string nombre)
         {
-            var Pilsen = db.Producto.Where(x => x.NombreProd.Contains(Nombre));
-            return View("Catalogo", Pilsen);
+            var query = db.Producto.Where(x => x.NombreProd.Contains(nombre));
+            decimal count = query.Count();
+            decimal total = Math.Ceiling(count / artXpag);
+            return View("Index", query.OrderBy(x => x.IdProducto).Skip(0).Take(artXpag));
         }
 
     }
