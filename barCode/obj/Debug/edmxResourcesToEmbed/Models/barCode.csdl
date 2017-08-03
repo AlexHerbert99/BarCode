@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="barCodeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Administradores">
-    <Key>
-      <PropertyRef Name="IdAdmin" />
-    </Key>
-    <Property Name="IdAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdDistribuidor" Type="Int32" />
-    <Property Name="RutAdm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="NombreAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApPatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApMatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-  </EntityType>
   <EntityType Name="Boleta">
     <Key>
       <PropertyRef Name="IdBoleta" />
@@ -78,7 +64,6 @@
     <Property Name="Region1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
   </EntityType>
   <EntityContainer Name="barCodeEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Administradores" EntityType="Self.Administradores" />
     <EntitySet Name="Boleta" EntityType="Self.Boleta" />
     <EntitySet Name="Comuna" EntityType="Self.Comuna" />
     <EntitySet Name="Direccion" EntityType="Self.Direccion" />
@@ -88,6 +73,7 @@
     <EntitySet Name="Region" EntityType="Self.Region" />
     <EntitySet Name="Producto" EntityType="barCodeModel.Producto" />
     <EntitySet Name="Categoria" EntityType="barCodeModel.Categoria" />
+    <EntitySet Name="Administradores" EntityType="barCodeModel.Administradores" />
     <EntitySet Name="Cliente" EntityType="barCodeModel.Cliente" />
   </EntityContainer>
   <EntityType Name="Producto">
@@ -111,13 +97,26 @@
     </Key>
     <Property Name="IdCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="Administradores">
+    <Key>
+      <PropertyRef Name="IdAdmin" />
+    </Key>
+    <Property Name="IdAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDistribuidor" Type="Int32" />
+    <Property Name="RutAdm" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="NombreAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApPatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApMatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
   <EntityType Name="Cliente">
     <Key>
       <PropertyRef Name="IdCliente" />
     </Key>
     <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Rut" Type="Int32" />
-    <Property Name="Dv" Type="Int32" />
+    <Property Name="Rut" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
     <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ApPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="ApMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />

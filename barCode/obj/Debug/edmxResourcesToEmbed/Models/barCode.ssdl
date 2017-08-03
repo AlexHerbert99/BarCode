@@ -6,7 +6,7 @@
     </Key>
     <Property Name="IdAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdDistribuidor" Type="int" />
-    <Property Name="RutAdm" Type="varchar" MaxLength="20" />
+    <Property Name="RutAdm" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="NombreAdm" Type="varchar" MaxLength="50" />
     <Property Name="ApPatAdm" Type="varchar" MaxLength="50" />
     <Property Name="ApMatAdm" Type="varchar" MaxLength="50" />
@@ -39,8 +39,7 @@
       <PropertyRef Name="IdCliente" />
     </Key>
     <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Rut" Type="int" />
-    <Property Name="Dv" Type="int" />
+    <Property Name="Rut" Type="char" MaxLength="10" Nullable="false" />
     <Property Name="Nombres" Type="varchar" MaxLength="50" />
     <Property Name="ApPaterno" Type="varchar" MaxLength="50" />
     <Property Name="ApMaterno" Type="varchar" MaxLength="50" />

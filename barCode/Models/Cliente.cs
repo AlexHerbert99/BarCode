@@ -15,8 +15,7 @@ namespace barCode.Models
     public partial class Cliente
     {
         public int IdCliente { get; set; }
-        public Nullable<int> Rut { get; set; }
-        public Nullable<int> Dv { get; set; }
+        public string Rut { get; set; }
         public string Nombres { get; set; }
         public string ApPaterno { get; set; }
         public string ApMaterno { get; set; }

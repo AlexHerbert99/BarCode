@@ -1,21 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="barCodeModelStoreContainer" CdmEntityContainer="barCodeEntities">
-    <EntitySetMapping Name="Administradores">
-      <EntityTypeMapping TypeName="barCodeModel.Administradores">
-        <MappingFragment StoreEntitySet="Administradores">
-          <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
-          <ScalarProperty Name="IdDistribuidor" ColumnName="IdDistribuidor" />
-          <ScalarProperty Name="RutAdm" ColumnName="RutAdm" />
-          <ScalarProperty Name="NombreAdm" ColumnName="NombreAdm" />
-          <ScalarProperty Name="ApPatAdm" ColumnName="ApPatAdm" />
-          <ScalarProperty Name="ApMatAdm" ColumnName="ApMatAdm" />
-          <ScalarProperty Name="Fono" ColumnName="Fono" />
-          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Boleta">
       <EntityTypeMapping TypeName="barCodeModel.Boleta">
         <MappingFragment StoreEntitySet="Boleta">
@@ -109,6 +94,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Administradores">
+      <EntityTypeMapping TypeName="barCodeModel.Administradores">
+        <MappingFragment StoreEntitySet="Administradores">
+          <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Fono" ColumnName="Fono" />
+          <ScalarProperty Name="ApMatAdm" ColumnName="ApMatAdm" />
+          <ScalarProperty Name="ApPatAdm" ColumnName="ApPatAdm" />
+          <ScalarProperty Name="NombreAdm" ColumnName="NombreAdm" />
+          <ScalarProperty Name="RutAdm" ColumnName="RutAdm" />
+          <ScalarProperty Name="IdDistribuidor" ColumnName="IdDistribuidor" />
+          <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Cliente">
       <EntityTypeMapping TypeName="barCodeModel.Cliente">
         <MappingFragment StoreEntitySet="Cliente">
@@ -118,7 +118,6 @@
           <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
           <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
           <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-          <ScalarProperty Name="Dv" ColumnName="Dv" />
           <ScalarProperty Name="Rut" ColumnName="Rut" />
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
         </MappingFragment>

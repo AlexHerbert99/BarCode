@@ -11,7 +11,7 @@
           </Key>
           <Property Name="IdAdmin" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdDistribuidor" Type="int" />
-          <Property Name="RutAdm" Type="varchar" MaxLength="20" />
+          <Property Name="RutAdm" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="NombreAdm" Type="varchar" MaxLength="50" />
           <Property Name="ApPatAdm" Type="varchar" MaxLength="50" />
           <Property Name="ApMatAdm" Type="varchar" MaxLength="50" />
@@ -44,8 +44,7 @@
             <PropertyRef Name="IdCliente" />
           </Key>
           <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Rut" Type="int" />
-          <Property Name="Dv" Type="int" />
+          <Property Name="Rut" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="Nombres" Type="varchar" MaxLength="50" />
           <Property Name="ApPaterno" Type="varchar" MaxLength="50" />
           <Property Name="ApMaterno" Type="varchar" MaxLength="50" />
@@ -134,20 +133,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="barCodeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Administradores">
-          <Key>
-            <PropertyRef Name="IdAdmin" />
-          </Key>
-          <Property Name="IdAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="IdDistribuidor" Type="Int32" />
-          <Property Name="RutAdm" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="NombreAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ApPatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="ApMatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Boleta">
           <Key>
             <PropertyRef Name="IdBoleta" />
@@ -212,7 +197,6 @@
           <Property Name="Region1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
         </EntityType>
         <EntityContainer Name="barCodeEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Administradores" EntityType="Self.Administradores" />
           <EntitySet Name="Boleta" EntityType="Self.Boleta" />
           <EntitySet Name="Comuna" EntityType="Self.Comuna" />
           <EntitySet Name="Direccion" EntityType="Self.Direccion" />
@@ -222,6 +206,7 @@
           <EntitySet Name="Region" EntityType="Self.Region" />
           <EntitySet Name="Producto" EntityType="barCodeModel.Producto" />
           <EntitySet Name="Categoria" EntityType="barCodeModel.Categoria" />
+          <EntitySet Name="Administradores" EntityType="barCodeModel.Administradores" />
           <EntitySet Name="Cliente" EntityType="barCodeModel.Cliente" />
         </EntityContainer>
         <EntityType Name="Producto">
@@ -245,13 +230,26 @@
           </Key>
           <Property Name="IdCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="Administradores">
+          <Key>
+            <PropertyRef Name="IdAdmin" />
+          </Key>
+          <Property Name="IdAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdDistribuidor" Type="Int32" />
+          <Property Name="RutAdm" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="NombreAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApPatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ApMatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Cliente">
           <Key>
             <PropertyRef Name="IdCliente" />
           </Key>
           <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Rut" Type="Int32" />
-          <Property Name="Dv" Type="Int32" />
+          <Property Name="Rut" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="ApMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -265,21 +263,6 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="barCodeModelStoreContainer" CdmEntityContainer="barCodeEntities">
-          <EntitySetMapping Name="Administradores">
-            <EntityTypeMapping TypeName="barCodeModel.Administradores">
-              <MappingFragment StoreEntitySet="Administradores">
-                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
-                <ScalarProperty Name="IdDistribuidor" ColumnName="IdDistribuidor" />
-                <ScalarProperty Name="RutAdm" ColumnName="RutAdm" />
-                <ScalarProperty Name="NombreAdm" ColumnName="NombreAdm" />
-                <ScalarProperty Name="ApPatAdm" ColumnName="ApPatAdm" />
-                <ScalarProperty Name="ApMatAdm" ColumnName="ApMatAdm" />
-                <ScalarProperty Name="Fono" ColumnName="Fono" />
-                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
-                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Boleta">
             <EntityTypeMapping TypeName="barCodeModel.Boleta">
               <MappingFragment StoreEntitySet="Boleta">
@@ -373,6 +356,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Administradores">
+            <EntityTypeMapping TypeName="barCodeModel.Administradores">
+              <MappingFragment StoreEntitySet="Administradores">
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Fono" ColumnName="Fono" />
+                <ScalarProperty Name="ApMatAdm" ColumnName="ApMatAdm" />
+                <ScalarProperty Name="ApPatAdm" ColumnName="ApPatAdm" />
+                <ScalarProperty Name="NombreAdm" ColumnName="NombreAdm" />
+                <ScalarProperty Name="RutAdm" ColumnName="RutAdm" />
+                <ScalarProperty Name="IdDistribuidor" ColumnName="IdDistribuidor" />
+                <ScalarProperty Name="IdAdmin" ColumnName="IdAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="barCodeModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
@@ -382,7 +380,6 @@
                 <ScalarProperty Name="ApMaterno" ColumnName="ApMaterno" />
                 <ScalarProperty Name="ApPaterno" ColumnName="ApPaterno" />
                 <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-                <ScalarProperty Name="Dv" ColumnName="Dv" />
                 <ScalarProperty Name="Rut" ColumnName="Rut" />
                 <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
               </MappingFragment>
