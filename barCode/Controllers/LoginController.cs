@@ -52,5 +52,23 @@ namespace barCode.Controllers
             return View("cerrarSesion");
         }
 
+        [HttpPost]
+        public ActionResult Validar(string Login, string Contraseña)
+        {
+            var buscarLogin = db.Cliente.SingleOrDefault(x => x.User == Login && x.Pass == Contraseña);
+
+            if (buscarLogin == null)
+            {
+                ViewBag.error = "Usuario y/o Contraseña Incorrecto";
+                return View("Index");
+            }
+            else
+            {
+                Session["Usuario"] = buscarLogin;
+                Session["NomUsuario"] = buscarLogin.Nombres;
+                return Redirect("~/Catalogo/Index/");
+            }
+        }
+
     }
 }

@@ -48,9 +48,16 @@
 
                 <div align="right">
                     <p></p>
-                    <a class="btn btn-xs btn-info text-shadow" href="/Login/Index">Iniciar Sesión</a>
-                    <a class="btn btn-xs btn-info text-shadow" href="/Clientes/Create">Registrarse</a>
-                    @Context.User.Identity.Name
+                    @if (Session["Usuario"] == null)
+                    {
+                        <a class="btn btn-xs btn-info text-shadow" href="/Login/Index">Iniciar Sesión</a>
+                        <a class="btn btn-xs btn-info text-shadow" href="/Clientes/Create">Registrarse</a>
+                    }
+                    else
+                    {
+                        <a class="text-info">@Html.ActionLink("Hola " + Session["NomUsuario"] + "!!", "Login") |</a>
+                        <a class="text-info">@Html.ActionLink("Cerrar Sesion", "cerrarSesion", "Login")</a>
+                    }
 
                 </div>
             </div>
