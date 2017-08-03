@@ -20,55 +20,27 @@
     </div>
 </div>
 <p></p>
-<table class="table table-bordered table-hover" style="background-color:bisque">
+<table class="table table-bordered table-hover" style="background-color:white">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Rut)
-        </th>        
-        <th>
-            @Html.DisplayNameFor(model => model.Nombres)
-        </th>
-        <th>
-            Apellido Paterno
-        </th>
-        <th>
-            Apellido Materno
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.User)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pass)
-        </th>
+        <th>Rut</th>        
+        <th>Nombres</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>Telefono</th>
+        <th>usuario</th>
+        <th>Contraseña</th>
         <th>Opciones</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rut)
-        </td>       
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombres)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApPaterno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApMaterno)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Telefono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.User)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pass)
-        </td>
+        <td>@Html.DisplayFor(modelItem => item.Rut)</td>       
+        <td>@Html.DisplayFor(modelItem => item.Nombres)</td>
+        <td>@Html.DisplayFor(modelItem => item.ApPaterno)</td>
+        <td>@Html.DisplayFor(modelItem => item.ApMaterno)</td>
+        <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+        <td>@Html.DisplayFor(modelItem => item.User)</td>
+        <td>@Html.DisplayFor(modelItem => item.Pass)</td>
         <td>
             @Html.ActionLink("Editar", "Edit", new { id=item.IdCliente }) |           
             @Html.ActionLink("Eliminar", "Delete", new { id=item.IdCliente })
