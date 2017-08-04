@@ -4,70 +4,38 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 style="color:white">Administradores</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <a class="btn btn-info" href="/Administradores/Create">Agregar</a>
 </p>
-<table class="table">
+<table class="table table-hover table-bordered" style="background-color:white">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdDistribuidor)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.RutAdm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreAdm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApPatAdm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApMatAdm)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fono)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contrasena)
-        </th>
-        <th></th>
+        <th>@Html.DisplayNameFor(model => model.IdDistribuidor)</th>
+        <th>@Html.DisplayNameFor(model => model.RutAdm)</th>
+        <th>Nombres</th>
+        <th>Apellido Paterno</th>
+        <th>Apellido Materno</th>
+        <th>@Html.DisplayNameFor(model => model.Fono)</th>
+        <th>@Html.DisplayNameFor(model => model.Usuario)</th>
+        <th>@Html.DisplayNameFor(model => model.Contrasena)</th>
+        <th>Opciones</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>@Html.DisplayFor(modelItem => item.IdDistribuidor)</td>
+        <td>@Html.DisplayFor(modelItem => item.RutAdm)</td>
+        <td>@Html.DisplayFor(modelItem => item.NombreAdm)</td>
+        <td>@Html.DisplayFor(modelItem => item.ApPatAdm)</td>
+        <td>@Html.DisplayFor(modelItem => item.ApMatAdm)</td>
+        <td>@Html.DisplayFor(modelItem => item.Fono)</td>
+        <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
+        <td>@Html.DisplayFor(modelItem => item.Contrasena)</td>
+
         <td>
-            @Html.DisplayFor(modelItem => item.IdDistribuidor)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RutAdm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NombreAdm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApPatAdm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ApMatAdm)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fono)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contrasena)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdAdmin }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdAdmin }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdAdmin })
+            @Html.ActionLink("Editar", "Edit", new { id=item.IdAdmin }) |            
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.IdAdmin })
         </td>
     </tr>
 }

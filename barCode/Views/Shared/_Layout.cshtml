@@ -50,14 +50,13 @@
                     <p></p>
                     @if (Session["Usuario"] == null)
                     {
-                        <a class="btn btn-xs btn-info text-shadow" href="/Login/Index">Iniciar Sesión</a>
-                        <a class="btn btn-xs btn-info text-shadow" href="/Clientes/Create">Registrarse</a>
+                        <a class="btn btn-xs btn-success text-shadow" href="/Login/Index">Iniciar Sesión</a>
+                        <a class="btn btn-xs btn-success text-shadow" href="/Clientes/Create">Registrarse</a>
                     }
                     else
                     {
                         <a class="text-info">@Html.ActionLink("Hola " + Session["NomUsuario"] + "!!", "Login") |</a>
-                        <a class="text-info" href="/Login/cerrarSesion">Cerrar Sesion</a>                        
-                    
+                        <a class="text-info" href="/Login/cerrarSesion">Cerrar Sesion</a>                
                     }
 
                 </div>
@@ -68,7 +67,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - { Bar Code }</p>
+            <p style="color:white">&copy; @DateTime.Now.Year - { Bar Code }</p>
         </footer>
     </div>
 
