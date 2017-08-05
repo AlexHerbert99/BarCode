@@ -33,7 +33,7 @@ namespace barCode.Controllers
                 string encryptedTicket = FormsAuthentication.Encrypt(ticket);
                 var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
                 HttpContext.Response.Cookies.Add(authCookie);
-                return Redirect("~/Catalogo/Index");
+                return Redirect("Index");
             }
             else
             {
@@ -46,11 +46,24 @@ namespace barCode.Controllers
             return View();
         } 
 
-        public ActionResult cerrarSesion()
+        public ActionResult logout()
         {
-            FormsAuthentication.SignOut();
-            return View("cerrarSesion");
+            int ok = 0;
+            if (Session["Usuario"] != null) { Session["Usuario"] = null; ok++; }
+            if (Session["NomUsuario"] != null) { Session["NombUsuario"] = null; ok++; }
+            //if (Session["Rol"] != null) { Session["Rol"] = null; ok++; }
+
+            if (ok == 2)
+                return Redirect("~/Catalogo/Index");
+            else
+                return Redirect("~/Login/noEncontrado");
         }
+
+        //public ActionResult cerrarSesion()
+        //{
+        //    FormsAuthentication.SignOut();
+        //    return View("cerrarSesion");
+        //}
 
         [HttpPost]
         public ActionResult Validar(string Login, string Contraseña)
@@ -60,7 +73,7 @@ namespace barCode.Controllers
             if (buscarLogin == null)
             {
                 ViewBag.error = "Usuario y/o Contraseña Incorrecto";
-                return View("Index");
+                return View("noEncontrado");
             }
             else
             {

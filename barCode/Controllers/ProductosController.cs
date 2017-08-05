@@ -42,7 +42,7 @@ namespace barCode.Controllers
 
         //IMAGEN
         [HttpPost]
-        public ActionResult agregar(Producto imageModel)
+        public ActionResult agregarImagen(Producto imageModel)
         {
             string fileName = Path.GetFileNameWithoutExtension(imageModel.imageFile.FileName);
             string extension = Path.GetExtension(imageModel.imageFile.FileName);

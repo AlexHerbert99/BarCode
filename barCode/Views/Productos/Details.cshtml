@@ -9,10 +9,8 @@
 <div>
     <h4></h4>
     <hr />
-    <dl class="dl-horizontal" style="color:white">
-        
-        <dt>@Html.DisplayNameFor(model => model.Foto)</dt>
-        <dd><img src="@Html.DisplayFor(model => model.Foto)"/></dd>
+    <dl class="dl-horizontal" style="color:white">       
+        <img src="@Url.Content(Model.Foto)" height="130" width="130" />
 
         <dt>@Html.DisplayNameFor(model => model.NombreProd)</dt>
         <dd>@Html.DisplayFor(model => model.NombreProd)</dd>
@@ -28,7 +26,8 @@
 
     </dl>
 </div>
-<p>
-    
-    @Html.ActionLink("Volver", "Index", "Catalogo")
+<p>    
+    <a class="btn btn-info" href="/Catalogo">Volver</a>  
 </p>
+
+

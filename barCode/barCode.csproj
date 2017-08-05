@@ -293,7 +293,6 @@
     <Content Include="Views\Productos\Create.cshtml" />
     <Content Include="Views\Productos\Delete.cshtml" />
     <Content Include="Views\Productos\Details.cshtml" />
-    <Content Include="Views\Productos\Edit.cshtml" />
     <Content Include="Views\Productos\Index.cshtml" />
     <Content Include="Views\Clientes\Create.cshtml" />
     <Content Include="Views\Clientes\Delete.cshtml" />
@@ -317,6 +316,7 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\cerrarSesion.cshtml" />
     <Content Include="Views\Login\noEncontrado.cshtml" />
+    <Content Include="Views\Productos\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

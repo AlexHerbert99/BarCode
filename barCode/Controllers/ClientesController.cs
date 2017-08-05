@@ -60,22 +60,21 @@ namespace barCode.Controllers
             return View();
         }
 
-        // POST: Clientes/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Cliente.Add(cliente);
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
+      
 
-        //    return View(cliente);
-        //}
+       [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Cliente.Add(cliente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(cliente);
+        }
 
         public bool validarRut(string rut)
         {
