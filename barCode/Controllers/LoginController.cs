@@ -51,7 +51,7 @@ namespace barCode.Controllers
             int ok = 0;
             if (Session["Usuario"] != null) { Session["Usuario"] = null; ok++; }
             if (Session["NomUsuario"] != null) { Session["NombUsuario"] = null; ok++; }
-            //if (Session["Rol"] != null) { Session["Rol"] = null; ok++; }
+         
 
             if (ok == 2)
                 return Redirect("~/Catalogo/Index");
@@ -59,11 +59,7 @@ namespace barCode.Controllers
                 return Redirect("~/Login/noEncontrado");
         }
 
-        //public ActionResult cerrarSesion()
-        //{
-        //    FormsAuthentication.SignOut();
-        //    return View("cerrarSesion");
-        //}
+      
 
         [HttpPost]
         public ActionResult Validar(string Login, string Contraseña)
