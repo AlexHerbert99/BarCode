@@ -73,9 +73,9 @@
                 <div>
                     <div class="">
                         <header>
-                            <h5 class="text-shadow text-bold">@item.NombreProd</h5>
+                            <h5 class="text-shadow text-info">@item.NombreProd</h5>
                             <input type="hidden" name="id" value="@item.IdProducto" />
-                            <button data-toggle="tooltip" data-placement="bottom" title="Al agregar, se cuenta una caja de 12 unidades" type="submit" value="Agregar" class="btn btn-xs btn-success text-shadow">Al Carrito</button>
+                            <button data-toggle="tooltip" data-placement="bottom" title="Al agregar, se cuenta una caja de 12 unidades" type="submit" value="Agregar" class="btn btn-xs btn-success text-shadow">Añadir al Carrito</button>
                             <img src="@Url.Content(item.Foto)" height="130" width="130" />
                         </header>
                     </div>
@@ -92,7 +92,7 @@
             <div class="row">
                 <form action="~/Productos/Details">
                     <input type="hidden" name="id" value="@item.IdProducto" />
-                    <button class="btn btn-xs btn-info">Detalles</button>
+                    <button class="btn btn-xs btn-info">Conócela</button>
                 </form>
             </div>
         </div>

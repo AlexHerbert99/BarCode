@@ -9,25 +9,30 @@
 <div>
     <h4></h4>
     <hr />
-    <dl class="dl-horizontal" style="color:white">       
-        <img src="@Url.Content(Model.Foto)" height="130" width="130" />
-
-        <dt>@Html.DisplayNameFor(model => model.NombreProd)</dt>
-        <dd>@Html.DisplayFor(model => model.NombreProd)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.Marca)</dt>
-        <dd>@Html.DisplayFor(model => model.Marca)</dd>
-
-       <dt>@Html.DisplayNameFor(model => model.Precio)</dt>
-        <dd>$@Html.DisplayFor(model => model.Precio)</dd>
-
-        <dt>@Html.DisplayNameFor(model => model.Descripcion)</dt>
-        <dd>@Html.DisplayFor(model => model.Descripcion)</dd>
-
+    <dl class="" style="color:white"> 
+        <h3>@Html.DisplayFor(model => model.NombreProd)</h3>
+        <div class="row">
+            <div class="col-md-2">
+                <img src="@Url.Content(Model.Foto)" height="130" width="130" />
+            </div>
+            <p></p>
+            <div class="col-lg-10" align="left">                           
+                <dd>@Html.DisplayFor(model => model.Descripcion)</dd><p></p>                
+                <dd class="text-bold text-info">$@Html.DisplayFor(model => model.Precio)</dd>                
+            </div>
+        </div>
+        <p></p>
+        <div>           
+            <form action="~/Carrito/Agregar/">
+                <input type="hidden" name="id" value="@Model.IdProducto" />
+                <button type="submit" value="Agregar" class="btn btn-success text-shadow">Añadir al Carrito</button>
+            </form>
+            <p></p>
+            <a class="btn btn-info" href="/Catalogo">Volver</a>
+        </div>
+        
     </dl>
 </div>
-<p>    
-    <a class="btn btn-info" href="/Catalogo">Volver</a>  
-</p>
+
 
 
