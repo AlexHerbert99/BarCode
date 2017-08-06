@@ -75,7 +75,7 @@ namespace barCode.Controllers
             {
                 Session["Usuario"] = buscarLogin;
                 Session["NomUsuario"] = buscarLogin.Nombres;
-                return Redirect("~/Catalogo/Index/");
+                return Redirect("~/Carrito/Index/");
             }
         }
 

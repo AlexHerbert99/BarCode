@@ -74,6 +74,11 @@ namespace barCode.Controllers
             Session["carro"] = null;
             return View("Index");
         }
+
+        public ActionResult Pendiente()
+        {
+            return View("Pendiente");
+        }
  
     }
 }

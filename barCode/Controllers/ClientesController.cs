@@ -57,10 +57,9 @@ namespace barCode.Controllers
         // GET: Clientes/Create
         public ActionResult Create()
         {
-            return View();
+            return View("Index");
         }
-
-      
+              
 
        [HttpPost]
         [ValidateAntiForgeryToken]
@@ -70,10 +69,10 @@ namespace barCode.Controllers
             {
                 db.Cliente.Add(cliente);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("~/Login/Index");
             }
 
-            return View(cliente);
+            return View("~/Login/Index");
         }
 
         public bool validarRut(string rut)

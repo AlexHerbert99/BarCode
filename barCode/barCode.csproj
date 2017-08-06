@@ -317,6 +317,7 @@
     <Content Include="Views\Login\cerrarSesion.cshtml" />
     <Content Include="Views\Login\noEncontrado.cshtml" />
     <Content Include="Views\Productos\Edit.cshtml" />
+    <Content Include="Views\Carrito\Pendiente.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
