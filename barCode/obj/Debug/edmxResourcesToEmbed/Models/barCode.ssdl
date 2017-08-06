@@ -101,8 +101,9 @@
     <Property Name="Marca" Type="varchar" MaxLength="50" />
     <Property Name="Stock" Type="int" />
     <Property Name="Precio" Type="int" Nullable="false" />
-    <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="2000" />
     <Property Name="Eliminado" Type="bit" />
+    <Property Name="Grado" Type="varchar" MaxLength="5" />
   </EntityType>
   <EntityType Name="Region">
     <Key>

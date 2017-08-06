@@ -29,5 +29,6 @@ namespace barCode.Models
         public int Precio { get; set; }
         public string Descripcion { get; set; }
         public Nullable<bool> Eliminado { get; set; }
+        public string Grado { get; set; }
     }
 }

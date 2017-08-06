@@ -106,8 +106,9 @@
           <Property Name="Marca" Type="varchar" MaxLength="50" />
           <Property Name="Stock" Type="int" />
           <Property Name="Precio" Type="int" Nullable="false" />
-          <Property Name="Descripcion" Type="varchar" MaxLength="200" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="2000" />
           <Property Name="Eliminado" Type="bit" />
+          <Property Name="Grado" Type="varchar" MaxLength="5" />
         </EntityType>
         <EntityType Name="Region">
           <Key>
@@ -221,8 +222,9 @@
           <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Stock" Type="Int32" />
           <Property Name="Precio" Type="Int32" Nullable="false" />
-          <Property Name="Descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
           <Property Name="Eliminado" Type="Boolean" />
+          <Property Name="Grado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Categoria">
           <Key>
@@ -336,6 +338,7 @@
           <EntitySetMapping Name="Producto">
             <EntityTypeMapping TypeName="barCodeModel.Producto">
               <MappingFragment StoreEntitySet="Producto">
+                <ScalarProperty Name="Grado" ColumnName="Grado" />
                 <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Precio" ColumnName="Precio" />

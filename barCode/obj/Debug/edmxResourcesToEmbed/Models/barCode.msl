@@ -74,6 +74,7 @@
     <EntitySetMapping Name="Producto">
       <EntityTypeMapping TypeName="barCodeModel.Producto">
         <MappingFragment StoreEntitySet="Producto">
+          <ScalarProperty Name="Grado" ColumnName="Grado" />
           <ScalarProperty Name="Eliminado" ColumnName="Eliminado" />
           <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
           <ScalarProperty Name="Precio" ColumnName="Precio" />
