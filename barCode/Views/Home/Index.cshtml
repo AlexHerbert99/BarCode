@@ -65,7 +65,12 @@
                     <img src="~/Imagenes/Slider3.jpg" alt="New york" style="width:100%;">
                     <div class="carousel-caption">
                         <p class="lead">Las mejores cervezas Nacionales e Internacionales en un solo Lugar...</p>
-                        <a class="btn btn-info" href="/Catalogo" role="button">Catalogo</a>
+
+                         <form name="formulario" action="~/Catalogo/Index">
+                            <input type="checkbox" value="1" name="pepe" onclick="javascript:validar(this);"><p>Soy mayor de edad</p>
+                            <button class="btn btn-info" value="Index" name="boton" disabled>Mostrar Catálogo</button>
+                        </form>
+                        
                     </div>
                 </div>
             </div>
@@ -85,7 +90,15 @@
 </body>
 </html>
 
-@*<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery.js"></script>
-<link href="~/Content/full-slider.css" rel="stylesheet" />
-<link href="~/Content/bootstrap.min.css" rel="stylesheet" />*@
+<script>
+    function validar(obj) {
+        var d = document.formulario;
+        if (obj.checked == true) {
+            d.boton.disabled = false;
+        } else {
+            d.boton.disabled = true;
+        }
+    }
+</script>
+
+
