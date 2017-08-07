@@ -51,6 +51,7 @@
           <Property Name="Telefono" Type="varchar" MaxLength="50" />
           <Property Name="User" Type="varchar" MaxLength="50" />
           <Property Name="Pass" Type="varchar" MaxLength="20" />
+          <Property Name="fechaNacimiento" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="Comuna">
           <Key>
@@ -258,6 +259,7 @@
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -377,6 +379,7 @@
           <EntitySetMapping Name="Cliente">
             <EntityTypeMapping TypeName="barCodeModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
                 <ScalarProperty Name="User" ColumnName="User" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />

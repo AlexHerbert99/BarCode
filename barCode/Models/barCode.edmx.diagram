@@ -15,7 +15,7 @@
         <EntityTypeShape EntityType="barCodeModel.Producto" Width="1.5" PointX="9.75" PointY="0.5" />
         <EntityTypeShape EntityType="barCodeModel.Categoria" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="barCodeModel.Administradores" Width="1.5" PointX="7.875" PointY="2.5" />
-        <EntityTypeShape EntityType="barCodeModel.Cliente" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="barCodeModel.Cliente" Width="1.5" PointX="6" PointY="4.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

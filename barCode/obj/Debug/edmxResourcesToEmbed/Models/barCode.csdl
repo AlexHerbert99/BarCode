@@ -124,5 +124,6 @@
     <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
 </Schema>

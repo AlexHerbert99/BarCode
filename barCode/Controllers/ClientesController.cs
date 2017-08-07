@@ -14,67 +14,26 @@ namespace barCode.Controllers
     {
         private barCodeEntities db = new barCodeEntities();
 
-        // GET: Clientes
-        
-
         int itemXpag = 3;
         public ActionResult Index(int pagina = 1)
         {
             decimal count = db.Cliente.Count();
             decimal total = Math.Ceiling(count / itemXpag);
-
             ViewBag.Total = total + 1;
             int salto = (pagina - 1) * itemXpag;
-
             var cli = db.Cliente.OrderBy(x => x.Rut).Skip(salto).Take(itemXpag);
-            return View(cli.ToList());
+            return View(db.Cliente.ToList());
         }
 
-        //BUSCADOR
-        public ActionResult Buscador(string nombre)
+        public ActionResult Buscador(string Rut)
         {
-            var query = db.Cliente.Where(x => x.Nombres.Contains(nombre));
+            var query = db.Cliente.Where(x => x.Nombres.Contains(Rut));
             decimal count = query.Count();
             decimal total = Math.Ceiling(count / itemXpag);
-            return View("Index", query);
+            return View("index", query);
         }
 
-        // GET: Clientes/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Cliente cliente = db.Cliente.Find(id);
-            if (cliente == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cliente);
-        }
-
-        // GET: Clientes/Create
-        public ActionResult Create()
-        {
-            return View("Index");
-        }
-              
-
-       [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Cliente.Add(cliente);
-                db.SaveChanges();
-                return RedirectToAction("~/Login/Index");
-            }
-
-            return View("~/Login/Index");
-        }
-
+        //VALIDAR RUT
         public bool validarRut(string rut)
         {
             bool validacion = false;
@@ -103,6 +62,47 @@ namespace barCode.Controllers
             return validacion;
         }
 
+        public ActionResult registroOk()
+        {
+            return View();
+        }
+
+        // GET: Clientes/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Cliente cliente = db.Cliente.Find(id);
+            if (cliente == null)
+            {
+                return HttpNotFound();
+            }
+            return View(cliente);
+        }
+
+        // GET: Clientes/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+       
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass,fechaNacimiento")] Cliente cliente)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Cliente.Add(cliente);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(cliente);
+        }
+
         // GET: Clientes/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -118,12 +118,10 @@ namespace barCode.Controllers
             return View(cliente);
         }
 
-        // POST: Clientes/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdCliente,Rut,Dv,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass")] Cliente cliente)
+        public ActionResult Edit([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass,fechaNacimiento")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {

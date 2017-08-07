@@ -22,5 +22,6 @@ namespace barCode.Models
         public string Telefono { get; set; }
         public string User { get; set; }
         public string Pass { get; set; }
+        public System.DateTime fechaNacimiento { get; set; }
     }
 }

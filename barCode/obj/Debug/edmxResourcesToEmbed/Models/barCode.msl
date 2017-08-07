@@ -113,6 +113,7 @@
     <EntitySetMapping Name="Cliente">
       <EntityTypeMapping TypeName="barCodeModel.Cliente">
         <MappingFragment StoreEntitySet="Cliente">
+          <ScalarProperty Name="fechaNacimiento" ColumnName="fechaNacimiento" />
           <ScalarProperty Name="Pass" ColumnName="Pass" />
           <ScalarProperty Name="User" ColumnName="User" />
           <ScalarProperty Name="Telefono" ColumnName="Telefono" />

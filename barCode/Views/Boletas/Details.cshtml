@@ -1,0 +1,82 @@
+﻿@model barCode.Models.Boleta
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Boleta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdRegistro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdRegistro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdDistribuidor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdDistribuidor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NroBoleta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NroBoleta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Total)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Total)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Despachado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Despachado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Detalle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Detalle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdBoleta }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

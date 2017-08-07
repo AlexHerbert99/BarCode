@@ -6,7 +6,7 @@
 
 <h2 style="color:white">Eliminar</h2>
 
-<h3 style="color:white">Estas Seguro??</h3>
+<h3 style="color:white">Estas seguro??</h3>
 <div>
     <h4 style="color:white">Cliente</h4>
     <hr />
@@ -19,8 +19,6 @@
             @Html.DisplayFor(model => model.Rut)
         </dd>
 
-        
-
         <dt>
             @Html.DisplayNameFor(model => model.Nombres)
         </dt>
@@ -30,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ApPaterno)
+            Apellido Paterno
         </dt>
 
         <dd>
@@ -38,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ApMaterno)
+            Apellido Materno
         </dt>
 
         <dd>
@@ -69,14 +67,22 @@
             @Html.DisplayFor(model => model.Pass)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.fechaNacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fechaNacimiento)
+        </dd>
+
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Eliminar" class="btn btn-danger" /> |
-            @Html.ActionLink("Volver", "Index")
+            <input type="submit" value="Delete" class="btn btn-info" /> |
+            <a class="btn btn-info" href="/Clientes">Volver</a>
         </div>
     }
 </div>

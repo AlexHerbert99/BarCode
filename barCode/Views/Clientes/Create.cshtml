@@ -4,7 +4,7 @@
     ViewBag.Title = "Create";
 }
 
-<h2 style="color:white">Inscripción</h2>
+<h2 style="color:white">Agregar</h2>
 
 @using (Html.BeginForm()) 
 {
@@ -14,18 +14,13 @@
         <h4 style="color:white">Cliente</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
         <div class="form-group">
-            <label class="control-label col-md-2" for="Rut">Rut</label>
+            @Html.LabelFor(model => model.Rut, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="txt_rut" name="Rut" type="text" value="" placeholder="Ej: 11111111-1">
-                <span class="field-validation-valid text-danger" data-valmsg-for="Rut" data-valmsg-replace="true"></span>
-                @*<button id="btnvalida" class="btn btn-default">Validar</button>
-                <p class="text-info" id="msgerror"></p>*@
+                @Html.EditorFor(model => model.Rut, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rut, "", new { @class = "text-danger" })
             </div>
         </div>
-
-      
 
         <div class="form-group">
             @Html.LabelFor(model => model.Nombres, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -60,10 +55,10 @@
         </div>
 
         <div class="form-group">
-            <label class="control-label col-md-2" for="User">User</label>
+            @Html.LabelFor(model => model.User, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input class="form-control text-box single-line" id="User" name="User" type="text" value="" placeholder="Email">
-                <span class="field-validation-valid text-danger" data-valmsg-for="User" data-valmsg-replace="true"></span>
+                @Html.EditorFor(model => model.User, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.User, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -76,18 +71,21 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.fechaNacimiento, "Fecha de Nacimiento", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fechaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fechaNacimiento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Guardar" class="btn btn-info" />
             </div>
         </div>
-
-        
-
     </div>
 }
 
 <div>
-    @Html.ActionLink("Volver", "Index")
+    <a class="btn btn-info" href="/Clientes">Volver</a>
 </div>
-
-
