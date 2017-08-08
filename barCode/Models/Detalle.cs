@@ -12,18 +12,21 @@ namespace barCode.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Region
+    public partial class Detalle
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Region()
+        public Detalle()
         {
-            this.Comuna = new HashSet<Comuna>();
+            this.Boleta = new HashSet<Boleta>();
         }
     
-        public int IdRegion { get; set; }
-        public string Region1 { get; set; }
+        public int idDetalle { get; set; }
+        public int Cantidad { get; set; }
+        public int Total { get; set; }
+        public int IdProducto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Comuna> Comuna { get; set; }
+        public virtual ICollection<Boleta> Boleta { get; set; }
+        public virtual Producto Producto { get; set; }
     }
 }

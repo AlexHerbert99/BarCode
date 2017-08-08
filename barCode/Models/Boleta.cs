@@ -15,13 +15,19 @@ namespace barCode.Models
     public partial class Boleta
     {
         public int IdBoleta { get; set; }
-        public int IdRegistro { get; set; }
+        public int idMedioPago { get; set; }
         public int IdCliente { get; set; }
-        public Nullable<int> IdDistribuidor { get; set; }
-        public Nullable<int> NroBoleta { get; set; }
-        public Nullable<int> Total { get; set; }
+        public int IdDistribuidor { get; set; }
+        public int NroBoleta { get; set; }
+        public int Total { get; set; }
         public string Fecha { get; set; }
-        public Nullable<bool> Despachado { get; set; }
+        public bool Despachado { get; set; }
         public string Detalle { get; set; }
+        public int idDetalle { get; set; }
+    
+        public virtual Cliente Cliente { get; set; }
+        public virtual Distribuidor Distribuidor { get; set; }
+        public virtual Cuentas Cuentas { get; set; }
+        public virtual Detalle Detalle1 { get; set; }
     }
 }

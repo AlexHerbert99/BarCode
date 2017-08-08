@@ -19,5 +19,8 @@ namespace barCode.Models
         public int IdComuna { get; set; }
         public int IdCliente { get; set; }
         public string Direccion1 { get; set; }
+    
+        public virtual Cliente Cliente { get; set; }
+        public virtual Comuna Comuna { get; set; }
     }
 }

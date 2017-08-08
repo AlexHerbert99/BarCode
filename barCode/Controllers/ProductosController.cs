@@ -13,7 +13,7 @@ namespace barCode.Controllers
 {
     public class ProductosController : Controller
     {
-        private barCodeEntities db = new barCodeEntities();
+        private barCodePruebaEntities db = new barCodePruebaEntities();
 
         //GET: Productos
 

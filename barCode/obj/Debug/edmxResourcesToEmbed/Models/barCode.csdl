@@ -1,18 +1,64 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="barCodeModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="barCodePruebaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Administradores">
+    <Key>
+      <PropertyRef Name="IdAdmin" />
+    </Key>
+    <Property Name="IdAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdDistribuidor" Type="Int32" />
+    <Property Name="RutAdm" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="NombreAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApPatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApMatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Distribuidor" Relationship="Self.FK_Administradores_Distribuidor" FromRole="Administradores" ToRole="Distribuidor" />
+  </EntityType>
   <EntityType Name="Boleta">
     <Key>
       <PropertyRef Name="IdBoleta" />
     </Key>
     <Property Name="IdBoleta" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdRegistro" Type="Int32" Nullable="false" />
+    <Property Name="idMedioPago" Type="Int32" Nullable="false" />
     <Property Name="IdCliente" Type="Int32" Nullable="false" />
-    <Property Name="IdDistribuidor" Type="Int32" />
-    <Property Name="NroBoleta" Type="Int32" />
-    <Property Name="Total" Type="Int32" />
-    <Property Name="Fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Despachado" Type="Boolean" />
-    <Property Name="Detalle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="IdDistribuidor" Type="Int32" Nullable="false" />
+    <Property Name="NroBoleta" Type="Int32" Nullable="false" />
+    <Property Name="Total" Type="Int32" Nullable="false" />
+    <Property Name="Fecha" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Despachado" Type="Boolean" Nullable="false" />
+    <Property Name="Detalle" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idDetalle" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Boleta_Cliente" FromRole="Boleta" ToRole="Cliente" />
+    <NavigationProperty Name="Distribuidor" Relationship="Self.FK_Boleta_Distribuidor" FromRole="Boleta" ToRole="Distribuidor" />
+    <NavigationProperty Name="Cuentas" Relationship="Self.FK_Boleta_MediosdePago" FromRole="Boleta" ToRole="Cuentas" />
+    <NavigationProperty Name="Detalle1" Relationship="barCodePruebaModel.FK_Boleta_DetalleCompra" FromRole="Boleta" ToRole="Detalle" />
+  </EntityType>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nacionales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Internacionales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Categoria" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <EntityType Name="Cliente">
+    <Key>
+      <PropertyRef Name="IdCliente" />
+    </Key>
+    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rut" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ApMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Boleta" Relationship="Self.FK_Boleta_Cliente" FromRole="Cliente" ToRole="Boleta" />
+    <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Cliente" FromRole="Cliente" ToRole="Direccion" />
+    <NavigationProperty Name="Historial" Relationship="barCodePruebaModel.FK_HistorialCompras_Cliente" FromRole="Cliente" ToRole="Historial" />
   </EntityType>
   <EntityType Name="Comuna">
     <Key>
@@ -21,6 +67,18 @@
     <Property Name="IdComuna" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="IdRegion" Type="Int32" Nullable="false" />
     <Property Name="Comuna1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Region" Relationship="Self.FK_Comuna_Region" FromRole="Comuna" ToRole="Region" />
+    <NavigationProperty Name="Direccion" Relationship="Self.FK_Direccion_Comuna" FromRole="Comuna" ToRole="Direccion" />
+  </EntityType>
+  <EntityType Name="Cuentas">
+    <Key>
+      <PropertyRef Name="idMedioPago" />
+    </Key>
+    <Property Name="idMedioPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdBoleta" Type="Int32" Nullable="false" />
+    <Property Name="nroCuenta" Type="Int32" Nullable="false" />
+    <Property Name="tipoCuenta" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Boleta" Relationship="Self.FK_Boleta_MediosdePago" FromRole="Cuentas" ToRole="Boleta" />
   </EntityType>
   <EntityType Name="Direccion">
     <Key>
@@ -31,6 +89,8 @@
     <Property Name="IdComuna" Type="Int32" Nullable="false" />
     <Property Name="IdCliente" Type="Int32" Nullable="false" />
     <Property Name="Direccion1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Cliente" Relationship="Self.FK_Direccion_Cliente" FromRole="Direccion" ToRole="Cliente" />
+    <NavigationProperty Name="Comuna" Relationship="Self.FK_Direccion_Comuna" FromRole="Direccion" ToRole="Comuna" />
   </EntityType>
   <EntityType Name="Distribuidor">
     <Key>
@@ -39,50 +99,15 @@
     <Property Name="IdDistribuidor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Distribuidor1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Comentarios" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Administradores" Relationship="Self.FK_Administradores_Distribuidor" FromRole="Distribuidor" ToRole="Administradores" />
+    <NavigationProperty Name="Boleta" Relationship="Self.FK_Boleta_Distribuidor" FromRole="Distribuidor" ToRole="Boleta" />
   </EntityType>
-  <EntityType Name="HistorialCompras">
-    <Key>
-      <PropertyRef Name="IdRegistro" />
-    </Key>
-    <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdCliente" Type="Int32" />
-    <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
-  <EntityType Name="MediosdePago">
-    <Key>
-      <PropertyRef Name="IdPago" />
-    </Key>
-    <Property Name="IdPago" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdBoleta" Type="Int32" Nullable="false" />
-    <Property Name="MedioPago" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Region">
-    <Key>
-      <PropertyRef Name="IdRegion" />
-    </Key>
-    <Property Name="IdRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Region1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-  </EntityType>
-  <EntityContainer Name="barCodeEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Boleta" EntityType="Self.Boleta" />
-    <EntitySet Name="Comuna" EntityType="Self.Comuna" />
-    <EntitySet Name="Direccion" EntityType="Self.Direccion" />
-    <EntitySet Name="Distribuidor" EntityType="Self.Distribuidor" />
-    <EntitySet Name="HistorialCompras" EntityType="Self.HistorialCompras" />
-    <EntitySet Name="MediosdePago" EntityType="Self.MediosdePago" />
-    <EntitySet Name="Region" EntityType="Self.Region" />
-    <EntitySet Name="Producto" EntityType="barCodeModel.Producto" />
-    <EntitySet Name="Categoria" EntityType="barCodeModel.Categoria" />
-    <EntitySet Name="Administradores" EntityType="barCodeModel.Administradores" />
-    <EntitySet Name="Cliente" EntityType="barCodeModel.Cliente" />
-  </EntityContainer>
   <EntityType Name="Producto">
     <Key>
       <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdProducto" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdBoleta" Type="Int32" />
-    <Property Name="IdCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="Foto" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <Property Name="NombreProd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -91,39 +116,225 @@
     <Property Name="Descripcion" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
     <Property Name="Eliminado" Type="Boolean" />
     <Property Name="Grado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Categoria" Relationship="Self.FK_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
+    <NavigationProperty Name="Detalle" Relationship="barCodePruebaModel.FK_DetalleCompra_Producto" FromRole="Producto" ToRole="Detalle" />
   </EntityType>
-  <EntityType Name="Categoria">
+  <EntityType Name="Region">
     <Key>
-      <PropertyRef Name="IdCategoria" />
+      <PropertyRef Name="IdRegion" />
     </Key>
-    <Property Name="IdCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IdRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Region1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Comuna" Relationship="Self.FK_Comuna_Region" FromRole="Region" ToRole="Comuna" />
   </EntityType>
-  <EntityType Name="Administradores">
+  <Association Name="FK_Administradores_Distribuidor">
+    <End Role="Distribuidor" Type="Self.Distribuidor" Multiplicity="0..1" />
+    <End Role="Administradores" Type="Self.Administradores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribuidor">
+        <PropertyRef Name="IdDistribuidor" />
+      </Principal>
+      <Dependent Role="Administradores">
+        <PropertyRef Name="IdDistribuidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleta_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Boleta" Type="Self.Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleta_Distribuidor">
+    <End Role="Distribuidor" Type="Self.Distribuidor" Multiplicity="1" />
+    <End Role="Boleta" Type="Self.Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribuidor">
+        <PropertyRef Name="IdDistribuidor" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="IdDistribuidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleta_MediosdePago">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Boleta" Type="Self.Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="idMedioPago" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="idMedioPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comuna_Region">
+    <End Role="Region" Type="Self.Region" Multiplicity="1" />
+    <End Role="Comuna" Type="Self.Comuna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="IdRegion" />
+      </Principal>
+      <Dependent Role="Comuna">
+        <PropertyRef Name="IdRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Comuna">
+    <End Role="Comuna" Type="Self.Comuna" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comuna">
+        <PropertyRef Name="IdComuna" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="IdComuna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="barCodePruebaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Administradores" EntityType="Self.Administradores" />
+    <EntitySet Name="Boleta" EntityType="Self.Boleta" />
+    <EntitySet Name="Categoria" EntityType="Self.Categoria" />
+    <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+    <EntitySet Name="Comuna" EntityType="Self.Comuna" />
+    <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
+    <EntitySet Name="Direccion" EntityType="Self.Direccion" />
+    <EntitySet Name="Distribuidor" EntityType="Self.Distribuidor" />
+    <EntitySet Name="Producto" EntityType="Self.Producto" />
+    <EntitySet Name="Region" EntityType="Self.Region" />
+    <AssociationSet Name="FK_Administradores_Distribuidor" Association="Self.FK_Administradores_Distribuidor">
+      <End Role="Distribuidor" EntitySet="Distribuidor" />
+      <End Role="Administradores" EntitySet="Administradores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleta_Cliente" Association="Self.FK_Boleta_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleta_Distribuidor" Association="Self.FK_Boleta_Distribuidor">
+      <End Role="Distribuidor" EntitySet="Distribuidor" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleta_MediosdePago" Association="Self.FK_Boleta_MediosdePago">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Cliente" Association="Self.FK_Direccion_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comuna_Region" Association="Self.FK_Comuna_Region">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="Comuna" EntitySet="Comuna" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Comuna" Association="Self.FK_Direccion_Comuna">
+      <End Role="Comuna" EntitySet="Comuna" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <EntitySet Name="Detalle" EntityType="barCodePruebaModel.Detalle" />
+    <EntitySet Name="Historial" EntityType="barCodePruebaModel.Historial" />
+    <AssociationSet Name="FK_Boleta_DetalleCompra" Association="barCodePruebaModel.FK_Boleta_DetalleCompra">
+      <End Role="Detalle" EntitySet="Detalle" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialCompras_Cliente" Association="barCodePruebaModel.FK_HistorialCompras_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Historial" EntitySet="Historial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCompra_Producto" Association="barCodePruebaModel.FK_DetalleCompra_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Detalle" EntitySet="Detalle" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Detalle">
     <Key>
-      <PropertyRef Name="IdAdmin" />
+      <PropertyRef Name="idDetalle" />
     </Key>
-    <Property Name="IdAdmin" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="IdDistribuidor" Type="Int32" />
-    <Property Name="RutAdm" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="NombreAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApPatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApMatAdm" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Fono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Usuario" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="idDetalle" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cantidad" Type="Int32" Nullable="false" />
+    <Property Name="Total" Type="Int32" Nullable="false" />
+    <Property Name="IdProducto" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Boleta" Relationship="barCodePruebaModel.FK_Boleta_DetalleCompra" FromRole="Detalle" ToRole="Boleta" />
+    <NavigationProperty Name="Producto" Relationship="barCodePruebaModel.FK_DetalleCompra_Producto" FromRole="Detalle" ToRole="Producto" />
   </EntityType>
-  <EntityType Name="Cliente">
+  <EntityType Name="Historial">
     <Key>
-      <PropertyRef Name="IdCliente" />
+      <PropertyRef Name="IdRegistro" />
     </Key>
-    <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Rut" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
-    <Property Name="Nombres" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApPaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ApMaterno" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="User" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="fechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="IdRegistro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCliente" Type="Int32" />
+    <Property Name="FechaCompra" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Cliente" Relationship="barCodePruebaModel.FK_HistorialCompras_Cliente" FromRole="Historial" ToRole="Cliente" />
   </EntityType>
+  <Association Name="FK_Boleta_DetalleCompra">
+    <End Type="barCodePruebaModel.Detalle" Role="Detalle" Multiplicity="1" />
+    <End Type="barCodePruebaModel.Boleta" Role="Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalle">
+        <PropertyRef Name="idDetalle" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="idDetalle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialCompras_Cliente">
+    <End Type="barCodePruebaModel.Cliente" Role="Cliente" Multiplicity="0..1" />
+    <End Type="barCodePruebaModel.Historial" Role="Historial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Historial">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCompra_Producto">
+    <End Type="barCodePruebaModel.Producto" Role="Producto" Multiplicity="1" />
+    <End Type="barCodePruebaModel.Detalle" Role="Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="Detalle">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

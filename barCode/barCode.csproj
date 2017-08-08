@@ -181,16 +181,19 @@
     <Compile Include="Models\Comuna.cs">
       <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Cuentas.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Detalle.cs">
+      <DependentUpon>barCode.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Direccion.cs">
       <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Distribuidor.cs">
       <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\HistorialCompras.cs">
-      <DependentUpon>barCode.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\MediosdePago.cs">
+    <Compile Include="Models\Historial.cs">
       <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Producto.cs">

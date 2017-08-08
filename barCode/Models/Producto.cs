@@ -15,12 +15,18 @@ namespace barCode.Models
 
     public partial class Producto
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Producto()
+        {
+            this.Detalle = new HashSet<Detalle>();
+        }
+
         public int cantidad = 1;
         public int montoTotal = 0;
         public HttpPostedFileBase imageFile { get; set; }
 
+
         public int IdProducto { get; set; }
-        public Nullable<int> IdBoleta { get; set; }
         public string IdCategoria { get; set; }
         public string Foto { get; set; }
         public string NombreProd { get; set; }
@@ -30,5 +36,9 @@ namespace barCode.Models
         public string Descripcion { get; set; }
         public Nullable<bool> Eliminado { get; set; }
         public string Grado { get; set; }
+    
+        public virtual Categoria Categoria { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Detalle> Detalle { get; set; }
     }
 }

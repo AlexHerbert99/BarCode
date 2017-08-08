@@ -14,6 +14,14 @@ namespace barCode.Models
     
     public partial class Cliente
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cliente()
+        {
+            this.Boleta = new HashSet<Boleta>();
+            this.Direccion = new HashSet<Direccion>();
+            this.Historial = new HashSet<Historial>();
+        }
+    
         public int IdCliente { get; set; }
         public string Rut { get; set; }
         public string Nombres { get; set; }
@@ -23,5 +31,12 @@ namespace barCode.Models
         public string User { get; set; }
         public string Pass { get; set; }
         public System.DateTime fechaNacimiento { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Boleta> Boleta { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Direccion> Direccion { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Historial> Historial { get; set; }
     }
 }

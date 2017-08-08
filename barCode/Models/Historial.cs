@@ -12,10 +12,12 @@ namespace barCode.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class HistorialCompras
+    public partial class Historial
     {
         public int IdRegistro { get; set; }
         public Nullable<int> IdCliente { get; set; }
         public System.DateTime FechaCompra { get; set; }
+    
+        public virtual Cliente Cliente { get; set; }
     }
 }

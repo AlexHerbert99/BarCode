@@ -14,6 +14,17 @@ namespace barCode.Models
     
     public partial class Categoria
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Categoria()
+        {
+            this.Producto = new HashSet<Producto>();
+        }
+    
         public string IdCategoria { get; set; }
+        public string Nacionales { get; set; }
+        public string Internacionales { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Producto> Producto { get; set; }
     }
 }

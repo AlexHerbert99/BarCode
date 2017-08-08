@@ -23,5 +23,7 @@ namespace barCode.Models
         public string Fono { get; set; }
         public string Usuario { get; set; }
         public string Contrasena { get; set; }
+    
+        public virtual Distribuidor Distribuidor { get; set; }
     }
 }

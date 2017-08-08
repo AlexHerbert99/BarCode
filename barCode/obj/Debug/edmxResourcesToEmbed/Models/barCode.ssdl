@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="barCodeModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="barCodePruebaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Administradores">
     <Key>
       <PropertyRef Name="IdAdmin" />
@@ -19,20 +19,23 @@
       <PropertyRef Name="IdBoleta" />
     </Key>
     <Property Name="IdBoleta" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdRegistro" Type="int" Nullable="false" />
+    <Property Name="idMedioPago" Type="int" Nullable="false" />
     <Property Name="IdCliente" Type="int" Nullable="false" />
-    <Property Name="IdDistribuidor" Type="int" />
-    <Property Name="NroBoleta" Type="int" />
-    <Property Name="Total" Type="int" />
-    <Property Name="Fecha" Type="varchar" MaxLength="20" />
-    <Property Name="Despachado" Type="bit" />
-    <Property Name="Detalle" Type="varchar" MaxLength="200" />
+    <Property Name="IdDistribuidor" Type="int" Nullable="false" />
+    <Property Name="NroBoleta" Type="int" Nullable="false" />
+    <Property Name="Total" Type="int" Nullable="false" />
+    <Property Name="Fecha" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Despachado" Type="bit" Nullable="false" />
+    <Property Name="Detalle" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="idDetalle" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Categoria">
     <Key>
       <PropertyRef Name="IdCategoria" />
     </Key>
     <Property Name="IdCategoria" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Nacionales" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Internacionales" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Cliente">
     <Key>
@@ -46,7 +49,7 @@
     <Property Name="Telefono" Type="varchar" MaxLength="50" />
     <Property Name="User" Type="varchar" MaxLength="50" />
     <Property Name="Pass" Type="varchar" MaxLength="20" />
-    <Property Name="fechaNacimiento" Type="date" Nullable="false" />
+    <Property Name="fechaNacimiento" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="Comuna">
     <Key>
@@ -54,7 +57,25 @@
     </Key>
     <Property Name="IdComuna" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="IdRegion" Type="int" Nullable="false" />
-    <Property Name="Comuna" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Comuna1" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cuentas">
+    <Key>
+      <PropertyRef Name="idMedioPago" />
+    </Key>
+    <Property Name="idMedioPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdBoleta" Type="int" Nullable="false" />
+    <Property Name="nroCuenta" Type="int" Nullable="false" />
+    <Property Name="tipoCuenta" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Detalle">
+    <Key>
+      <PropertyRef Name="idDetalle" />
+    </Key>
+    <Property Name="idDetalle" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Cantidad" Type="int" Nullable="false" />
+    <Property Name="Total" Type="int" Nullable="false" />
+    <Property Name="IdProducto" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Direccion">
     <Key>
@@ -64,17 +85,17 @@
     <Property Name="IdDistribuidor" Type="int" />
     <Property Name="IdComuna" Type="int" Nullable="false" />
     <Property Name="IdCliente" Type="int" Nullable="false" />
-    <Property Name="Direccion" Type="varchar" MaxLength="100" />
+    <Property Name="Direccion1" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="Distribuidor">
     <Key>
       <PropertyRef Name="IdDistribuidor" />
     </Key>
     <Property Name="IdDistribuidor" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Distribuidor" Type="varchar" MaxLength="50" />
+    <Property Name="Distribuidor1" Type="varchar" MaxLength="50" />
     <Property Name="Comentarios" Type="varchar" MaxLength="200" />
   </EntityType>
-  <EntityType Name="HistorialCompras">
+  <EntityType Name="Historial">
     <Key>
       <PropertyRef Name="IdRegistro" />
     </Key>
@@ -82,22 +103,13 @@
     <Property Name="IdCliente" Type="int" />
     <Property Name="FechaCompra" Type="datetime" Nullable="false" />
   </EntityType>
-  <EntityType Name="MediosdePago">
-    <Key>
-      <PropertyRef Name="IdPago" />
-    </Key>
-    <Property Name="IdPago" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdBoleta" Type="int" Nullable="false" />
-    <Property Name="MedioPago" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
   <EntityType Name="Producto">
     <Key>
       <PropertyRef Name="IdProducto" />
     </Key>
     <Property Name="IdProducto" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="IdBoleta" Type="int" />
     <Property Name="IdCategoria" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Foto" Type="text" />
+    <Property Name="Foto" Type="varchar(max)" />
     <Property Name="NombreProd" Type="varchar" MaxLength="50" />
     <Property Name="Marca" Type="varchar" MaxLength="50" />
     <Property Name="Stock" Type="int" />
@@ -111,19 +123,196 @@
       <PropertyRef Name="IdRegion" />
     </Key>
     <Property Name="IdRegion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Region" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Region1" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <EntityContainer Name="barCodeModelStoreContainer">
+  <Association Name="FK_Administradores_Distribuidor">
+    <End Role="Distribuidor" Type="Self.Distribuidor" Multiplicity="0..1" />
+    <End Role="Administradores" Type="Self.Administradores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribuidor">
+        <PropertyRef Name="IdDistribuidor" />
+      </Principal>
+      <Dependent Role="Administradores">
+        <PropertyRef Name="IdDistribuidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleta_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Boleta" Type="Self.Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleta_DetalleCompra">
+    <End Role="Detalle" Type="Self.Detalle" Multiplicity="1" />
+    <End Role="Boleta" Type="Self.Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Detalle">
+        <PropertyRef Name="idDetalle" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="idDetalle" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleta_Distribuidor">
+    <End Role="Distribuidor" Type="Self.Distribuidor" Multiplicity="1" />
+    <End Role="Boleta" Type="Self.Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Distribuidor">
+        <PropertyRef Name="IdDistribuidor" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="IdDistribuidor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Boleta_MediosdePago">
+    <End Role="Cuentas" Type="Self.Cuentas" Multiplicity="1" />
+    <End Role="Boleta" Type="Self.Boleta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cuentas">
+        <PropertyRef Name="idMedioPago" />
+      </Principal>
+      <Dependent Role="Boleta">
+        <PropertyRef Name="idMedioPago" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comuna_Region">
+    <End Role="Region" Type="Self.Region" Multiplicity="1" />
+    <End Role="Comuna" Type="Self.Comuna" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="IdRegion" />
+      </Principal>
+      <Dependent Role="Comuna">
+        <PropertyRef Name="IdRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DetalleCompra_Producto">
+    <End Role="Producto" Type="Self.Producto" Multiplicity="1" />
+    <End Role="Detalle" Type="Self.Detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Producto">
+        <PropertyRef Name="IdProducto" />
+      </Principal>
+      <Dependent Role="Detalle">
+        <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Direccion_Comuna">
+    <End Role="Comuna" Type="Self.Comuna" Multiplicity="1" />
+    <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comuna">
+        <PropertyRef Name="IdComuna" />
+      </Principal>
+      <Dependent Role="Direccion">
+        <PropertyRef Name="IdComuna" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HistorialCompras_Cliente">
+    <End Role="Cliente" Type="Self.Cliente" Multiplicity="0..1" />
+    <End Role="Historial" Type="Self.Historial" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cliente">
+        <PropertyRef Name="IdCliente" />
+      </Principal>
+      <Dependent Role="Historial">
+        <PropertyRef Name="IdCliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Producto_Categoria">
+    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
+    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdCategoria" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="barCodePruebaModelStoreContainer">
     <EntitySet Name="Administradores" EntityType="Self.Administradores" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Boleta" EntityType="Self.Boleta" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categoria" EntityType="Self.Categoria" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Comuna" EntityType="Self.Comuna" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cuentas" EntityType="Self.Cuentas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Detalle" EntityType="Self.Detalle" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Direccion" EntityType="Self.Direccion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Distribuidor" EntityType="Self.Distribuidor" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="HistorialCompras" EntityType="Self.HistorialCompras" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="MediosdePago" EntityType="Self.MediosdePago" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Historial" EntityType="Self.Historial" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Producto" EntityType="Self.Producto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Administradores_Distribuidor" Association="Self.FK_Administradores_Distribuidor">
+      <End Role="Distribuidor" EntitySet="Distribuidor" />
+      <End Role="Administradores" EntitySet="Administradores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleta_Cliente" Association="Self.FK_Boleta_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleta_DetalleCompra" Association="Self.FK_Boleta_DetalleCompra">
+      <End Role="Detalle" EntitySet="Detalle" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleta_Distribuidor" Association="Self.FK_Boleta_Distribuidor">
+      <End Role="Distribuidor" EntitySet="Distribuidor" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Boleta_MediosdePago" Association="Self.FK_Boleta_MediosdePago">
+      <End Role="Cuentas" EntitySet="Cuentas" />
+      <End Role="Boleta" EntitySet="Boleta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comuna_Region" Association="Self.FK_Comuna_Region">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="Comuna" EntitySet="Comuna" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DetalleCompra_Producto" Association="Self.FK_DetalleCompra_Producto">
+      <End Role="Producto" EntitySet="Producto" />
+      <End Role="Detalle" EntitySet="Detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Cliente" Association="Self.FK_Direccion_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Direccion_Comuna" Association="Self.FK_Direccion_Comuna">
+      <End Role="Comuna" EntitySet="Comuna" />
+      <End Role="Direccion" EntitySet="Direccion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HistorialCompras_Cliente" Association="Self.FK_HistorialCompras_Cliente">
+      <End Role="Cliente" EntitySet="Cliente" />
+      <End Role="Historial" EntitySet="Historial" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Producto" EntitySet="Producto" />
+    </AssociationSet>
   </EntityContainer>
 </Schema>

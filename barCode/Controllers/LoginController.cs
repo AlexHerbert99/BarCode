@@ -10,7 +10,7 @@ namespace barCode.Controllers
 {
     public class LoginController : Controller
     {
-        barCodeEntities db = new barCodeEntities();
+        barCodePruebaEntities db = new barCodePruebaEntities();
 
         public ActionResult Index()
         {

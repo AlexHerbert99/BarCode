@@ -14,8 +14,18 @@ namespace barCode.Models
     
     public partial class Comuna
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Comuna()
+        {
+            this.Direccion = new HashSet<Direccion>();
+        }
+    
         public int IdComuna { get; set; }
         public int IdRegion { get; set; }
         public string Comuna1 { get; set; }
+    
+        public virtual Region Region { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Direccion> Direccion { get; set; }
     }
 }
