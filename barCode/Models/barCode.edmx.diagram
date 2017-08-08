@@ -14,7 +14,7 @@
         <EntityTypeShape EntityType="barCodePruebaModel.Direccion" Width="1.5" PointX="6" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="barCodePruebaModel.Distribuidor" Width="1.5" PointX="0.5" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="barCodePruebaModel.Producto" Width="1.5" PointX="4.5" PointY="12.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="barCodePruebaModel.Region" Width="1.5" PointX="8.875" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="barCodePruebaModel.Region" Width="1.5" PointX="9.125" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="barCodePruebaModel.FK_Administradores_Distribuidor" ManuallyRouted="false" />
         <AssociationConnector Association="barCodePruebaModel.FK_Boleta_Cliente" ManuallyRouted="false" />
         <AssociationConnector Association="barCodePruebaModel.FK_Boleta_Distribuidor" ManuallyRouted="false" />
