@@ -24,6 +24,11 @@ namespace barCode.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();            
+        }
+
+        public ActionResult checkEdad()
+        {
             return View();
         }
     }

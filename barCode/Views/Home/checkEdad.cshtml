@@ -1,0 +1,26 @@
+﻿
+@{
+    ViewBag.Title = "checkEdad";
+}
+
+<h3 class="text-danger" style="color:white">Para ver este contenido debes confirmar que eres mayor de edad</h3>
+
+<form name="formulario" action="~/Home/Index">
+    <div class="row col-md-3">
+        <p style="color:skyblue">Confirmo que soy mayor de edad</p>
+        <input type="checkbox" value="1" name="pepe" onclick="javascript:validar(this);">
+    </div>
+    <button class="btn btn-info" value="Index" name="boton" disabled>Entrar</button>
+</form>
+
+<script>
+    function validar(obj) {
+        var d = document.formulario;
+        if (obj.checked == true) {
+            d.boton.disabled = false;
+        } else {
+            d.boton.disabled = true;
+        }
+    }
+</script>
+

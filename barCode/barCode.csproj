@@ -244,6 +244,10 @@
     <Content Include="Imagenes\Slider2.jpg" />
     <Content Include="Imagenes\Slider3.jpg" />
     <Content Include="Imagenes\Slider4.jpg" />
+    <Content Include="Imagenes\slider5.jpg" />
+    <Content Include="Imagenes\slider6.jpg" />
+    <Content Include="Imagenes\slider7.jpg" />
+    <Content Include="Imagenes\slide_1.jpg" />
     <Content Include="Imagenes\toro-macho.jpg" />
     <Content Include="Imagenes\trappe.jpg" />
     <Content Include="Imagenes\Tubinger-Red-Ale.jpg" />
@@ -328,6 +332,7 @@
     <Content Include="Views\Boletas\Edit.cshtml" />
     <Content Include="Views\Boletas\Index.cshtml" />
     <Content Include="Views\Clientes\registroOk.cshtml" />
+    <Content Include="Views\Home\checkEdad.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
