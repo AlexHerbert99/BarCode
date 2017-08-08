@@ -42,21 +42,21 @@ namespace barCode.Controllers
 
         //IMAGEN
         [HttpPost]
-        public ActionResult agregarImagen(Producto imageModel)
+        public ActionResult agregar(Producto imgModel)
         {
-            string fileName = Path.GetFileNameWithoutExtension(imageModel.imageFile.FileName);
-            string extension = Path.GetExtension(imageModel.imageFile.FileName);
+            string fileName = Path.GetFileNameWithoutExtension(imgModel.ImgFile.FileName);
+            string extension = Path.GetExtension(imgModel.ImgFile.FileName);
             fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-            imageModel.Foto = "~/Imagenes/" + fileName;
+            imgModel.Foto = "~/Imagenes/" + fileName;
 
             fileName = Path.Combine(Server.MapPath("~/Imagenes/"), fileName);
-            imageModel.imageFile.SaveAs(fileName);
+            imgModel.ImgFile.SaveAs(fileName);
             {
-                db.Producto.Add(imageModel);
+                db.Producto.Add(imgModel);
                 db.SaveChanges();
             }
             ModelState.Clear();
-            return View("Index");
+            return RedirectToAction("Index"); ;
         }
 
         [HttpGet]

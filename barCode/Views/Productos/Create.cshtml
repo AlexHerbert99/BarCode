@@ -7,7 +7,7 @@
 <h2 style="color:white">Agregar Nuevo Producto</h2>
 
 
-@using (Html.BeginForm("agregarImagen", "Producto", FormMethod.Post, new { enctype = "multipart/form-data"} ))
+@using (Html.BeginForm("agregar", "Productos", FormMethod.Post, new { enctype = "multipart/form-data"} ))
 {
     @Html.AntiForgeryToken()
     
@@ -31,7 +31,7 @@
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.Foto, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Foto, "", new { @class = "text-danger" })*@
-                <input type="file" name="imageFile" required />
+                <input type="file" name="ImgFile" required />
             </div>
         </div>
 

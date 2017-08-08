@@ -87,3 +87,8 @@
 }
 
 </table>
+
+@for (int i = 1; i < ViewBag.Total; i++)
+{
+    <a class="btn btn-default" href="~/Productos/Index?pagina=@i">@i</a>
+}
