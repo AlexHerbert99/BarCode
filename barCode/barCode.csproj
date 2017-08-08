@@ -229,7 +229,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagenes\background.jpg" />
     <Content Include="Imagenes\Bottleshot-IPA.png" />
     <Content Include="Imagenes\callecalle.jpg" />
     <Content Include="Imagenes\Diem-dunkel.jpg" />
@@ -240,13 +239,8 @@
     <Content Include="Imagenes\Pinta-Negra - copia.jpg" />
     <Content Include="Imagenes\Quimera.png" />
     <Content Include="Imagenes\slayerredale.jpg" />
-    <Content Include="Imagenes\Slider1.jpg" />
     <Content Include="Imagenes\Slider2.jpg" />
-    <Content Include="Imagenes\Slider3.jpg" />
-    <Content Include="Imagenes\Slider4.jpg" />
-    <Content Include="Imagenes\slider5.jpg" />
     <Content Include="Imagenes\slider6.jpg" />
-    <Content Include="Imagenes\slider7.jpg" />
     <Content Include="Imagenes\slide_1.jpg" />
     <Content Include="Imagenes\toro-macho.jpg" />
     <Content Include="Imagenes\trappe.jpg" />
