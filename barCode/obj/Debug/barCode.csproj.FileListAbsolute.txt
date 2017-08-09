@@ -53,3 +53,5 @@ C:\Users\alexh\Documents\Visual Studio 2015\Projects\barCode\barCode\obj\Debug\b
 C:\Users\alexh\Documents\Visual Studio 2015\Projects\barCode\barCode\obj\Debug\barCode.csprojResolveAssemblyReference.cache
 C:\Users\alexh\Documents\Visual Studio 2015\Projects\barCode\barCode\bin\RestSharp.dll
 C:\Users\alexh\Documents\Visual Studio 2015\Projects\barCode\barCode\bin\RestSharp.xml
+C:\Users\alexh\Documents\Visual Studio 2015\Projects\barCode\barCode\bin\Khipu.dll
+C:\Users\alexh\Documents\Visual Studio 2015\Projects\barCode\barCode\bin\Khipu.xml

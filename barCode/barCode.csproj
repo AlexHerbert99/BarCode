@@ -233,6 +233,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\Bottleshot-IPA.png" />
     <Content Include="Imagenes\callecalle.jpg" />
+    <Content Include="Imagenes\callecalle175103592.jpg" />
     <Content Include="Imagenes\Diem-dunkel.jpg" />
     <Content Include="Imagenes\ironmaiden.jpg" />
     <Content Include="Imagenes\Leyenda-Golden.jpg" />
@@ -310,7 +311,6 @@
     <Content Include="Views\Categorias\Details.cshtml" />
     <Content Include="Views\Categorias\Edit.cshtml" />
     <Content Include="Views\Categorias\Index.cshtml" />
-    <Content Include="Views\Carrito\finalizarCompra.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Login\cerrarSesion.cshtml" />

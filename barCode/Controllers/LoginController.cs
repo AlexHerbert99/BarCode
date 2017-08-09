@@ -17,29 +17,29 @@ namespace barCode.Controllers
             return View();
         }
 
-        public ActionResult Login(string user, string pass)
-        {
-            Models.Cliente us = db.Cliente.FirstOrDefault(x => x.User == user & x.Pass == pass);
-            if (us != null)
-            {
-                var ticket = new FormsAuthenticationTicket(
-                    1,
-                    user, //Nombre Usuario
-                    DateTime.Now, //Fecha creacion del ticket
-                    DateTime.Now.AddMinutes(2),
-                    false,
-                    "admin;cliente" //User Data, cualquier cosa
-                    );
-                string encryptedTicket = FormsAuthentication.Encrypt(ticket);
-                var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
-                HttpContext.Response.Cookies.Add(authCookie);
-                return Redirect("Index");
-            }
-            else
-            {
-                return Redirect("noEncontrado");
-            }
-        }
+        //public ActionResult Login(string user, string pass)
+        //{
+        //    Models.Cliente us = db.Cliente.FirstOrDefault(x => x.User == user & x.Pass == pass);
+        //    if (us != null)
+        //    {
+        //        var ticket = new FormsAuthenticationTicket(
+        //            1,
+        //            user, //Nombre Usuario
+        //            DateTime.Now, //Fecha creacion del ticket
+        //            DateTime.Now.AddMinutes(2),
+        //            false,
+        //            "admin;cliente" //User Data, cualquier cosa
+        //            );
+        //        string encryptedTicket = FormsAuthentication.Encrypt(ticket);
+        //        var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+        //        HttpContext.Response.Cookies.Add(authCookie);
+        //        return Redirect("Index");
+        //    }
+        //    else
+        //    {
+        //        return Redirect("noEncontrado");
+        //    }
+        //}
 
         public ActionResult noEncontrado()
         {

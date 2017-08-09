@@ -40,7 +40,7 @@ namespace barCode.Controllers
             return View("Index", query.OrderBy(x=> x.IdProducto).Skip(0).Take(itemXpag));
         }
 
-        //IMAGEN
+        //GUARDAR IMAGEN
         [HttpPost]
         public ActionResult agregar(Producto imgModel)
         {
