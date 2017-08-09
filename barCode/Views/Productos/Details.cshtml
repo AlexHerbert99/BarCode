@@ -1,16 +1,13 @@
 ﻿@model barCode.Models.Producto
 
-@{
-    //ViewBag.Title = "Details";
+@{   
     Layout = null;
 }
 
-<h2 style="color:white">Detalles</h2>
 
-<div>
-    <h4></h4>
-    <hr />
-    <dl class="" style="color:white"> 
+
+<body>    
+    <div class=""> 
         <h3>@Html.DisplayFor(model => model.NombreProd)</h3>
         <div class="row">
             <div class="col-md-2">
@@ -32,8 +29,8 @@
             <a class="btn btn-info" href="/Catalogo/Index">Volver</a>
         </div>
         
-    </dl>
-</div>
+    </div>
+</body>
 
 
 
