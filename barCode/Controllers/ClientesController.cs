@@ -25,9 +25,9 @@ namespace barCode.Controllers
             return View(db.Cliente.ToList());
         }
 
-        public ActionResult Buscador(string Rut)
+        public ActionResult Buscador(string nombre)
         {
-            var query = db.Cliente.Where(x => x.Nombres.Contains(Rut));
+            var query = db.Cliente.Where(x => x.Nombres.Contains(nombre));
             decimal count = query.Count();
             decimal total = Math.Ceiling(count / itemXpag);
             return View("index", query);
