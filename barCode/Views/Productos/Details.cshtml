@@ -1,7 +1,8 @@
 ﻿@model barCode.Models.Producto
 
 @{
-    ViewBag.Title = "Details";
+    //ViewBag.Title = "Details";
+    Layout = null;
 }
 
 <h2 style="color:white">Detalles</h2>
@@ -17,7 +18,7 @@
             </div>
             <p></p>
             <div class="col-lg-10" align="left">                           
-                <dd>@Html.DisplayFor(model => model.Descripcion)</dd><p></p>                
+                <dd style="color:black">@Html.DisplayFor(model => model.Descripcion)</dd><p></p>                
                 <dd class="text-bold text-info">Caja 12 Unidades: $@Html.DisplayFor(model => model.Precio)</dd>                
             </div>
         </div>
@@ -33,6 +34,8 @@
         
     </dl>
 </div>
+
+
 
 
 
