@@ -9,6 +9,7 @@
 <body>    
     <div class=""> 
         <h3>@Html.DisplayFor(model => model.NombreProd)</h3>
+        <hr />
         <div class="row">
             <div class="col-md-2">
                 <img src="@Url.Content(Model.Foto)" height="130" width="130" />
@@ -20,13 +21,14 @@
             </div>
         </div>
         <p></p>
+        <hr />
         <div>           
             <form action="~/Carrito/Agregar/">
                 <input type="hidden" name="id" value="@Model.IdProducto" />
                 <button type="submit" value="Agregar" class="btn btn-success text-shadow">Añadir al Carrito</button>
             </form>
             <p></p>
-            <a class="btn btn-info" href="/Catalogo/Index">Volver</a>
+            <a class="btn btn-default" href="/Catalogo/Index">Cerrar</a>
         </div>
         
     </div>
