@@ -5,12 +5,22 @@
 }
 <div class="row">
     <div class="col-md-8">
-        <h2 style="color:white">Carrito de compras</h2>
+        <h2 style="color:white">Carrito de Compras</h2>
     </div>
     <div class="col-md-4" align="right">
         <p></p>
-        <a class="btn btn-success" href="/Catalogo" role="button">Ir al Catalogo</a> |
-        <a class="btn btn-info text-shadow" href="/Carrito/Pendiente">Comprar</a>
+
+        <!---->
+        <a class="btn btn-success" href="/Catalogo/Index" role="button">Seguir Agregando</a> |
+        <!---->
+        @if (Session["Usuario"] == null)
+        {
+            <a href="/Login/Index" class="btn btn-info">Comprar</a>
+        }
+        else
+        {
+            <a class="btn btn-info text-shadow" href="/Pasarela/Index">Comprar</a>
+        }        
     </div>
 </div>
 
@@ -18,7 +28,7 @@
     <tr>
         <th>Foto</th>
         <th>Nombre</th>
-        <th>Descripcion</th>
+        <th>Marca</th>
         <th>Valor Caja</th>
         <th>Cajas</th>
         <th>Subtotal</th>
@@ -34,7 +44,7 @@
         <tr>
             <td><img src="@Url.Content(item.Foto)" height="100" width="100" /></td>
             <td>@item.NombreProd</td>
-            <td>@Html.DisplayFor(modelItem => item.Descripcion)</td>
+            <td>@Html.DisplayFor(modelItem => item.Marca)</td>
             <td>@String.Format("{0:C}", item.Precio)</td>
             <td>@Html.DisplayFor(modelItem => item.cantidad)</td>
             <td>@String.Format("{0:C}", item.montoTotal)</td>
