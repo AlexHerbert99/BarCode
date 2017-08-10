@@ -60,12 +60,7 @@ namespace barCode.Controllers
             {
             }
             return validacion;
-        }
-
-        public ActionResult registroOk()
-        {
-            return View();
-        }
+        }        
 
         // GET: Clientes/Details/5
         public ActionResult Details(int? id)
