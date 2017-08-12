@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AdministradoresController.cs" />
+    <Compile Include="Controllers\BancoFalsoController.cs" />
     <Compile Include="Controllers\BoletasController.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\CatalogoController.cs" />
@@ -155,6 +156,7 @@
     <Compile Include="Models\Administradores.cs">
       <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\BancoFalso.cs" />
     <Compile Include="Models\barCode.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -331,6 +333,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\BancoFalso\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

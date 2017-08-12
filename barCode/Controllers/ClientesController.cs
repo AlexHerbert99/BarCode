@@ -86,16 +86,16 @@ namespace barCode.Controllers
        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass,fechaNacimiento")] Cliente cliente)
+        public RedirectToRouteResult Create([Bind(Include = "IdCliente,Rut,Nombres,ApPaterno,ApMaterno,Telefono,User,Pass,fechaNacimiento")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
                 db.Cliente.Add(cliente);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Login");
             }
 
-            return View(cliente);
+            return RedirectToAction("Create");
         }
 
         // GET: Clientes/Edit/5
