@@ -16,15 +16,15 @@ namespace barCode.Controllers
     {
 
         barCodePruebaEntities db = new barCodePruebaEntities();
-        string urlbase = "hhtp://www.devkairos.com/BancoFalsoportal/serviciobancofalso/";
+        string urlbase = "http://www.devkairos.com/BancoFalsoportal/serviciobancofalso/";
         // GET: BancoFalso
         public JsonResult LoginBco(string user, string pass)
         {
             WebClient wc = new WebClient();
             NameValueCollection nv = new NameValueCollection();
             nv.Add("apikey", "3333333");
-            nv.Add("user", "");
-            nv.Add("pass", "");
+            nv.Add("user", user);
+            nv.Add("pass", pass);
 
             byte[] result = wc.UploadValues(urlbase + "Login", nv);
             string JsonLogin = Encoding.UTF8.GetString(result);
@@ -44,7 +44,6 @@ namespace barCode.Controllers
             string JsonResult = Encoding.UTF8.GetString(result);
             RespuestaCuentas rc = JsonConvert.DeserializeObject<RespuestaCuentas>(JsonResult);
             return Json(rc, JsonRequestBehavior.AllowGet);
-
         }
     }
 }

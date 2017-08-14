@@ -1,12 +1,16 @@
 ﻿
 @{
-    Layout = null;
- }
+    ViewBag.Title = "LoginKhipu";
+}
+
+<h2 style="color:white">Login Khipu</h2>
+
 <div align="center">
-    <h2>Iniciar Sesion</h2>
+    <h2 style="color:white">Iniciar Sesion</h2>
     <form action="~/Login/Validar/" method="post">
-        <input type="text" placeholder="Email" name="Login" class="form-control email" /><p></p>
+        <input type="text" placeholder="Rut" name="Login" class="form-control" /><p></p>
         <input type="password" name="Contraseña" class="form-control" placeholder="Password" /><p></p>
         <button type="submit" value="Logueo" class="btn btn-info">Enviar</button>
-    </form>    
+    </form>
 </div>
+

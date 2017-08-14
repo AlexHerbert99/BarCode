@@ -63,7 +63,6 @@ namespace barCode.Controllers
         }
 
         public ActionResult Buscador(string Nombre)
-
         {
             var Birra = db.Producto.Where(x => x.NombreProd.Contains(Nombre));
             return View("Carrito", Birra);

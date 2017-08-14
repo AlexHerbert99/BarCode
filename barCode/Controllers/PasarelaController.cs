@@ -13,5 +13,15 @@ namespace barCode.Controllers
         {
             return View();
         }
+
+        public ActionResult LoginBancoFalso()
+        {
+            return View();
+        }
+
+        public ActionResult LoginKhipu()
+        {
+            return View();
+        }
     }
 }
