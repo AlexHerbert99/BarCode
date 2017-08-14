@@ -3,14 +3,37 @@
     ViewBag.Title = "LoginBancoFalso";
 }
 
-<h2 style="color:white">Login BancoFalso</h2>
+
 
 <div align="center">
-    <h2 style="color:white">Iniciar Sesion</h2>
-    <form action="~/Login/Validar/" method="post">
-        <input type="text" placeholder="Rut" name="Login" class="form-control" /><p></p>
-        <input type="password" name="Contraseña" class="form-control" placeholder="Password" /><p></p>
-        <button type="submit" value="Logueo" class="btn btn-info">Enviar</button>
+    
+    <h4 style="color:white">Iniciar Sesion</h4>    
+        @*<input type="text" placeholder="Rut" name="" class="form-control" /><p></p>
+        <input type="password" name="Contraseña" class="form-control" placeholder="Password" /><p></p>*@
+    <form action="/BancoFalso/LoginBco">
+        <input type="submit" onclick="Leer()" class="btn btn-info" />
     </form>
 </div>
+
+@section scripts{
+<script>
+    function Leer()
+    {
+        $ajax({
+            url: 'http://localhost:54140/BancoFalso/LoginBco',
+            method: 'POST',
+            success: function (res) {
+                console.log(res);
+            },
+            error: function (a, b, c) {
+                console.log(a);
+                console.log(b);
+                console.log(c);
+            }
+        }),
+    }
+</script>
+    
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    }
 

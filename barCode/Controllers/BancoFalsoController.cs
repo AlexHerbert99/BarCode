@@ -18,13 +18,13 @@ namespace barCode.Controllers
         barCodePruebaEntities db = new barCodePruebaEntities();
         string urlbase = "http://www.devkairos.com/BancoFalsoportal/serviciobancofalso/";
         // GET: BancoFalso
-        public JsonResult LoginBco(string user, string pass)
+        public JsonResult LoginBco()
         {
             WebClient wc = new WebClient();
             NameValueCollection nv = new NameValueCollection();
             nv.Add("apikey", "3333333");
-            nv.Add("user", user);
-            nv.Add("pass", pass);
+            nv.Add("user", "16243551-5");
+            nv.Add("pass", "123456");
 
             byte[] result = wc.UploadValues(urlbase + "Login", nv);
             string JsonLogin = Encoding.UTF8.GetString(result);

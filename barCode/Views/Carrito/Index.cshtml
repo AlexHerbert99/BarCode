@@ -9,10 +9,9 @@
     </div>
     <div class="col-md-4" align="right">
         <p></p>
-
-        <!---->
+    
         <a class="btnLogin btn btn-success" href="/Catalogo/Index" role="button">Seguir Agregando</a> |
-        <!---->
+        
         @if (Session["Usuario"] == null)
         {
             <a href="#myModal" class="btnLogin btn btn-info" data-toggle="modal" >Comprar</a>
@@ -78,7 +77,6 @@
                 </div>
             </div>
 
-
         </div>
     </div>
 </div>
@@ -86,20 +84,18 @@
 
 @section scripts{
     <script>
-    $(".btnLogin").click(function (eve) {
+        $(".btnLogin").click(function (eve) {
 
-        $("#modal-content").load("/Login/Index/" + $(this).data("id"));
+            $("#modal-content").load("/Login/Index/" + $(this).data("id"));
 
-    });
+        });
     </script>
 
-<script>
+    <script>
         $(".btnComprar").click(function (eve) {
 
             $("#modal-content").load("/Pasarela/Index/" + $(this).data("id"));
 
         });
-</script>
-
-
+    </script>
 }
