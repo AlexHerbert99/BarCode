@@ -14,6 +14,11 @@ namespace barCode.Controllers
 {
     public class BancoFalsoController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
 
         barCodePruebaEntities db = new barCodePruebaEntities();
         string urlbase = "http://www.devkairos.com/BancoFalsoportal/serviciosbancofalso/";

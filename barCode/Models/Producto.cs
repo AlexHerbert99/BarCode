@@ -25,7 +25,6 @@ namespace barCode.Models
         public int montoTotal = 0;
         public HttpPostedFileBase ImgFile { get; set; }
 
-
         public int IdProducto { get; set; }
         public string IdCategoria { get; set; }
         public string Foto { get; set; }

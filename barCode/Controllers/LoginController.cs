@@ -53,6 +53,5 @@ namespace barCode.Controllers
                 return Redirect("~/Carrito/Index/");
             }
         }
-
     }
 }

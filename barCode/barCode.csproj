@@ -144,6 +144,7 @@
     <Compile Include="Controllers\CatalogoController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhipuController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PasarelaController.cs" />
     <Compile Include="Controllers\ProductosController.cs" />
@@ -314,10 +315,11 @@
     <Content Include="Views\Pasarela\Index.cshtml" />
     <Content Include="Views\Pasarela\LoginBancoFalso.cshtml" />
     <Content Include="Views\Pasarela\LoginKhipu.cshtml" />
+    <Content Include="Views\BancoFalso\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\BancoFalso\" />
+    <Folder Include="Views\Khipu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
