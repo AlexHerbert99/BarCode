@@ -3,7 +3,15 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2 style="color:white">Realizar Pago</h2>
 
-@Model.montoTotal;
+<form action="/BancoFalso/Pagar">
+    <input type="text" name="monto" placeholder="Monto" class="form-control"/><p></p>    
+    <input type="text" name="descripcion" placeholder="Descripcion" class="form-control" /><p></p>
+    <input type="text" name="idPedido" placeholder="Numero Pedido" class="form-control" /><p></p>
+    <input type="text" name="idCuenta" placeholder="id de Cuenta" class="form-control" /><p></p>
+    <input type="submit" class="btn btn-info" />
+</form>
+
+
 

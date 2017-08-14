@@ -3,20 +3,20 @@
     ViewBag.Title = "LoginBancoFalso";
 }
 
-
-
 <div align="center">
     
-    <h4 style="color:white">Iniciar Sesion</h4>    
-        @*<input type="text" placeholder="Rut" name="" class="form-control" /><p></p>
-        <input type="password" name="Contraseña" class="form-control" placeholder="Password" /><p></p>*@
+    <h4 style="color:white">Iniciar Sesion</h4> 
     <form action="/BancoFalso/LoginBco">
-        <input type="submit" onclick="Leer()" class="btn btn-info" />
+        <input type="text" placeholder="user" name="user" class="form-control" /><p></p>
+        <input type="password" name="pass" class="form-control" placeholder="Password" /><p></p>
+        <input type="submit" class="btn btn-info" />
     </form>
 </div>
 
+
+
 @section scripts{
-<script>
+@*<script>
     function Leer()
     {
         $ajax({
@@ -32,7 +32,7 @@
             }
         }),
     }
-</script>    
+</script>*@    
 
 }
 
