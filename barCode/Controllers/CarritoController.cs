@@ -52,7 +52,6 @@ namespace barCode.Controllers
             return View("Index", carro);
         }
 
-
         public ActionResult Borrar(int id)
         {
             if (Session["carro"] != null)

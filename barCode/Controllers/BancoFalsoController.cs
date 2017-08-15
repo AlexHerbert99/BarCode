@@ -19,10 +19,20 @@ namespace barCode.Controllers
         string rut = "16243551-5";
         string clave = "123456";
         string apik = "3333333";
+        List<Producto> carro = new List<Producto>();
 
         public ActionResult Index()
         {
-            return View();
+            if (Session["carro"] == null)
+            {
+                Session["carro"] = carro;
+            }
+            else
+            {
+                carro = (List<Producto>)Session["carro"];
+            }
+
+            return View(carro);
         }
 
         [HttpGet]       
