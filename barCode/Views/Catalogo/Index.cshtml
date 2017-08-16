@@ -73,7 +73,7 @@
                 <div>
                     <div class="">
                         <header>
-                            <h4 class="text-shadow text-info">@item.NombreProd</h4>
+                            <h4 class="text-shadow text-bold">@item.NombreProd</h4>
                             <input type="hidden" name="id" value="@item.IdProducto" />
                             <button type="submit" value="Agregar" class="btn btn-xs btn-success text-shadow">Añadir al Carrito</button>
                             <img src="@Url.Content(item.Foto)" height="130" width="130" />
@@ -84,8 +84,8 @@
 
             <div class="">
                 
-                <p>Caja 12 Unidades</p>
-                <p class="">Grados: @item.Grado°</p>              
+                <p class="text-muted">Caja 12 Unidades</p>
+                <p class="text-muted">Grados: @item.Grado°</p>              
                 <div><h4 class="text-bold text-info">@string.Format("{0:C}", item.Precio)</h4></div>
             </div>
             

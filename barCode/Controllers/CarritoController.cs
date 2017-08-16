@@ -32,6 +32,7 @@ namespace barCode.Controllers
         public ActionResult Agregar(int id)
         {
             Producto p = db.Producto.Find(id);
+            double total = 0;
 
             if (Session["carro"] != null)
                 carro = (List<Producto>)Session["carro"];
@@ -41,6 +42,7 @@ namespace barCode.Controllers
                 carro.SingleOrDefault(z => z.IdProducto == id).cantidad++;
                 var Chela = carro.SingleOrDefault(x => x.IdProducto == id);
                 carro.SingleOrDefault(x => x.IdProducto == id).montoTotal = Chela.cantidad * Chela.Precio;
+                
             }
             else
             {
@@ -51,11 +53,11 @@ namespace barCode.Controllers
             Session["carro"] = carro;
             return View("Index", carro);
         }
-
-        public ActionResult Borrar(int id)
+        
+    public ActionResult Borrar(int id)
         {
             if (Session["carro"] != null)
-                carro = (List<Producto>)Session["carro"];
+            carro = (List<Producto>)Session["carro"];
             Producto pro = carro.SingleOrDefault(x => x.IdProducto == id);
             carro.Remove(pro);
             return View("Index", carro);
@@ -76,7 +78,6 @@ namespace barCode.Controllers
         public ActionResult Pendiente()
         {
             return View("Pendiente");
-        }
- 
+        } 
     }
 }

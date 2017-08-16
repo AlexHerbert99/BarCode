@@ -81,6 +81,14 @@ namespace barCode.Controllers
             RespuestaPagos rp = JsonConvert.DeserializeObject<RespuestaPagos>(JsonResult);
             return Json(rp, JsonRequestBehavior.AllowGet);
         }
+
+        public int total()
+        {
+            int total = 0;
+            Producto p = new Producto();
+            total = (p.cantidad * p.Precio);
+            return (total);
+        }
     }
 }
 
