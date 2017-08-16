@@ -31,7 +31,7 @@ namespace barCode.Controllers
             return View(producto.ToList());
         }
 
-        //BUSCADOR
+        //BUSCADOR CON PAGINACION
         public ActionResult Buscador(string nombre)
         {
             var query = db.Producto.Where(x => x.NombreProd.Contains(nombre));
