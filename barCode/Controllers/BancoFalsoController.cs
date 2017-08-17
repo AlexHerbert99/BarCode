@@ -34,8 +34,8 @@ namespace barCode.Controllers
 
             return View(carro);
         }
-
-        [HttpGet]       
+        
+       
         public JsonResult LoginBco(string user, string pass)
         {
             WebClient wc = new WebClient();
@@ -82,11 +82,26 @@ namespace barCode.Controllers
             return Json(rp, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult anularCompra()
+        {
+            WebClient wc = new WebClient();
+            NameValueCollection nvc = new NameValueCollection();
+            nvc.Add("apikey", apik);
+            nvc.Add("descripcion", "Anulación de compra");
+            nvc.Add("idPedido", "5005");
+            nvc.Add("idCuenta", "154");
+
+            byte[] result = wc.UploadValues(urlbase + "Anular", nvc);
+            string JsonResult = Encoding.UTF8.GetString(result);
+            RespuestaAnulacion ra = JsonConvert.DeserializeObject<RespuestaAnulacion>(JsonResult);
+            return Json(ra, JsonRequestBehavior.AllowGet);
+        }
+
         public int total()
         {
             int total = 0;
             Producto p = new Producto();
-            total = (p.cantidad * p.Precio);
+            ViewBag.total = (p.cantidad * p.Precio);
             return (total);
         }
     }

@@ -10,8 +10,7 @@
     <input type="text" name="descripcion" placeholder="Descripcion" class="form-control" /><p></p>
     <input type="text" name="idPedido" placeholder="Numero Pedido" class="form-control" /><p></p>
     <input type="text" name="idCuenta" placeholder="id de Cuenta" class="form-control" /><p></p>
-    <input type="submit" value="Enviar" class="btn btn-info" />
-    
+    <input type="submit" value="Enviar" class="btn btn-info" />    
 </form>
 <p></p>
 
@@ -46,7 +45,12 @@
     </tfoot>
 </table>
 
-
+<p style="color:white">Seleccione tipo de cuenta:</p>
+<select class="form-control">
+    <option>Cuenta Corriente</option>
+    <option>Cuenta Vista</option>
+    <option>Cuenta de Ahorro</option>
+</select>
 
 <script>
     function mostrarTotal() {
