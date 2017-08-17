@@ -31,7 +31,6 @@ namespace barCode.Controllers
             {
                 carro = (List<Producto>)Session["carro"];
             }
-
             return View(carro);
         }
         
@@ -90,7 +89,7 @@ namespace barCode.Controllers
             nvc.Add("descripcion", "Anulación de compra");
             nvc.Add("idPedido", "5005");
             nvc.Add("idCuenta", "154");
-            nvc.Add("monto", "5000");
+            nvc.Add("monto", "50000");
 
             byte[] result = wc.UploadValues(urlbase + "Anular", nvc);
             string JsonResult = Encoding.UTF8.GetString(result);
