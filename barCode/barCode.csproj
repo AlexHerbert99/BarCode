@@ -280,6 +280,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\run_prettify.js" />
     <Content Include="Scripts\Rut.js" />
+    <Content Include="Scripts\ScriptGeneral.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -316,6 +317,8 @@
     <Content Include="Views\Pasarela\LoginBancoFalso.cshtml" />
     <Content Include="Views\Pasarela\LoginKhipu.cshtml" />
     <Content Include="Views\BancoFalso\Index.cshtml" />
+    <Content Include="Views\BancoFalso\anularCompra.cshtml" />
+    <Content Include="Views\BancoFalso\PagoOk.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

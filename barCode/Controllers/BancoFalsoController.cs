@@ -32,10 +32,10 @@ namespace barCode.Controllers
                 carro = (List<Producto>)Session["carro"];
             }
             return View(carro);
-        }
+        }     
         
        
-        public JsonResult LoginBco(string user, string pass)
+        public JsonResult loginBanco(string user, string pass)
         {
             WebClient wc = new WebClient();
             NameValueCollection nv = new NameValueCollection();
@@ -49,7 +49,7 @@ namespace barCode.Controllers
             return Json(r.estado, JsonRequestBehavior.AllowGet);            
         }
 
-        public JsonResult TraerCuentas()
+        public JsonResult traerCuentas()
         {
             WebClient wc = new WebClient();
             NameValueCollection nvc = new NameValueCollection();
@@ -63,30 +63,28 @@ namespace barCode.Controllers
             return Json(rc, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Pagar(string monto, string descipcion, string idPedido, string idCuenta)
+        public JsonResult Pagar(string monto)
         {
             WebClient wc = new WebClient();
             NameValueCollection nvc = new NameValueCollection();
-            nvc.Add("apikey", apik);
-            nvc.Add("user", rut);
-            nvc.Add("pass", clave);
+            nvc.Add("apikey", apik);            
             nvc.Add("monto", monto);
-            nvc.Add("descripcion", descipcion);
-            nvc.Add("idPedido", idPedido);
-            nvc.Add("idCuenta", idCuenta);
+            nvc.Add("descripcion", "Compra en Barcode");
+            nvc.Add("idPedido", "10");
+            nvc.Add("idCuenta", "154");
 
             byte[] result = wc.UploadValues(urlbase + "Pagar", nvc);
             string JsonResult = Encoding.UTF8.GetString(result);
             RespuestaPagos rp = JsonConvert.DeserializeObject<RespuestaPagos>(JsonResult);
             return Json(rp, JsonRequestBehavior.AllowGet);
         }
-
-        public JsonResult anularCompra()
+        
+        public JsonResult anularCompra(string monto, string descripcion, string idPedido, string idCuenta)
         {
             WebClient wc = new WebClient();
             NameValueCollection nvc = new NameValueCollection();
             nvc.Add("apikey", apik);
-            nvc.Add("descripcion", "Anulación de compra");
+            nvc.Add("descripcion", "Anulacion de compra");
             nvc.Add("idPedido", "5005");
             nvc.Add("idCuenta", "154");
             nvc.Add("monto", "50000");
@@ -95,14 +93,11 @@ namespace barCode.Controllers
             string JsonResult = Encoding.UTF8.GetString(result);
             RespuestaAnulacion ra = JsonConvert.DeserializeObject<RespuestaAnulacion>(JsonResult);
             return Json(ra, JsonRequestBehavior.AllowGet);
-        }
+        }          
 
-        public int total()
+        public ActionResult PagoOk()
         {
-            int total = 0;
-            Producto p = new Producto();
-            ViewBag.total = (p.cantidad * p.Precio);
-            return (total);
+            return View();
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "anularCompra";
+}
+
+<h2 style="color:white">Anular Compra</h2>
+
+<form action="/BancoFalso/anularCompra">
+    <input type="text" name="idPedido" placeholder="Numero de Pedido" class="form-control" /><p></p>
+    <input type="text" name="idCuenta" placeholder="Codigo de Cuenta" class="form-control" /><p></p>
+    <input type="text" name="descripcion" placeholder="Observacion" class="form-control" /><p></p>
+    <input type="text" name="monto" placeholder="Monto" class="form-control" /><p></p>
+    <input type="submit" value="Enviar" class="btn btn-info" />
+</form>
+

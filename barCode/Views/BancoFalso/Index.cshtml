@@ -5,16 +5,15 @@
 
 <h2 style="color:white">Realizar Pago</h2>
 
-<form action="/BancoFalso/Pagar">
-    <input type="text" name="monto" placeholder="Monto" class="form-control"/><p></p>    
-    <input type="text" name="descripcion" placeholder="Descripcion" class="form-control" /><p></p>
-    <input type="text" name="idPedido" placeholder="Numero Pedido" class="form-control" /><p></p>
-    <input type="text" name="idCuenta" placeholder="id de Cuenta" class="form-control" /><p></p>
-    <input type="submit" value="Enviar" class="btn btn-info" />    
-</form>
-<p></p>
+<h5 style="color:white">Detalle de Pago:</h5>
 
-<form action="traercuentas"></form>
+@*<select id="idCuenta" class="form-control">
+    <option>Cuenta Corriente</option>
+    <option>Cuenta Vista</option>
+    <option>Cuenta de Ahorro</option>
+</select>*@
+
+<p></p>
 
 <table class="table table-hover table-bordered" style="background-color:white">
     <tr>        
@@ -44,19 +43,29 @@
         </tr>
     </tfoot>
 </table>
-
-<p style="color:white">Seleccione tipo de cuenta:</p>
-<select class="form-control">
-    <option>Cuenta Corriente</option>
-    <option>Cuenta Vista</option>
-    <option>Cuenta de Ahorro</option>
-</select>
+<p></p>
+<button class="btn btn-info" onclick="enviarMonto(@total)" >Pagar</button>
 
 <script>
-    function mostrarTotal() {
-        document.getElementById("totalCarrito")
+    function enviarMonto(monto) {
+        EjecutarAjax("/BancoFalso/Pagar", ["monto"], [monto],
+            function (success) {
+                if (success) {
+                    window.location.href = "../BancoFalso/PagoOk";
+                }
+                else {
+                    alert("Revise las credenciales.");
+                }
+            },
+            function (a, b, c) {
+                alert("Ocurrió una excepción al iniciar sesión en Bco. Falso.");
+            }
+        );
     }
 </script>
+
+
+
 
 
 
