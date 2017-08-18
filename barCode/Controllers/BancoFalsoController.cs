@@ -71,7 +71,7 @@ namespace barCode.Controllers
             nvc.Add("monto", monto);
             nvc.Add("descripcion", "Compra en Barcode");
             nvc.Add("idPedido", "10");
-            nvc.Add("idCuenta", "154");
+            nvc.Add("idCuenta", "155");
 
             byte[] result = wc.UploadValues(urlbase + "Pagar", nvc);
             string JsonResult = Encoding.UTF8.GetString(result);

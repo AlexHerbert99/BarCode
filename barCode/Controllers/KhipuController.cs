@@ -17,10 +17,13 @@ namespace barCode.Controllers
             return View();
         }
 
+        string secret = "5a042003cc116dd72b6e334ede10f95810abc195";
+        int idReceiver = 137704;
+
         public JsonResult crearPago()
         {
-            Configuration.ReceiverId = 137704;
-            Configuration.Secret = "5a042003cc116dd72b6e334ede10f95810abc195";
+            Configuration.ReceiverId = idReceiver;
+            Configuration.Secret = secret;
             PaymentsApi a = new PaymentsApi();
 
             try
@@ -37,6 +40,27 @@ namespace barCode.Controllers
                                                 , notifyUrl: "http://mi-ecomerce.com/backend/notify"
                                                 , notifyApiVersion: "1.3");
                 return Json(response);
+            }
+            catch (ApiException e)
+            {
+                return Json(e, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+        public ActionResult EnviarMail()
+        {
+            Configuration.ReceiverId = idReceiver;
+            Configuration.Secret = secret;
+            PaymentsApi a = new PaymentsApi();
+
+            try
+            {
+                PaymentsCreateResponse response = a.PaymentsPost("Compra de prueba de la API", "CLP", 100.0
+                                    , sendEmail: true
+                                    , sendReminders: true
+                                    , payerEmail: "juan.pagador@correo.com"
+                                    , payerName: "Juan Pagador");
+                System.Console.WriteLine(response);
             }
             catch (ApiException e)
             {
