@@ -31,8 +31,7 @@ namespace barCode.Controllers
 
         public ActionResult Agregar(int id)
         {
-            Producto p = db.Producto.Find(id);
-            double total = 0;
+            Producto p = db.Producto.Find(id);            
 
             if (Session["carro"] != null)
                 carro = (List<Producto>)Session["carro"];
@@ -54,7 +53,7 @@ namespace barCode.Controllers
             return View("Index", carro);
         }
         
-    public ActionResult Borrar(int id)
+        public ActionResult Borrar(int id)
         {
             if (Session["carro"] != null)
             carro = (List<Producto>)Session["carro"];
@@ -79,5 +78,13 @@ namespace barCode.Controllers
         {
             return View("Pendiente");
         } 
+
+        public int totalCarrito()
+        {
+            int total = 0;
+            Producto p = new Producto();
+            ViewBag.total = p.Precio * p.cantidad;
+            return (total);
+        }
     }
 }
