@@ -99,6 +99,34 @@ namespace barCode.Controllers
         {
             return View();
         }
+
+        //public ActionResult seleccionarCuenta()
+        //{
+        //    var cuentas = new List<Seleccionar>();
+        //    cuentas.Add(new Seleccionar()
+        //    {
+        //        id = 1,
+        //        Nombre = "Cuenta Corriente",
+        //        idCuenta = 154
+        //    });
+        //    cuentas.Add(new Seleccionar()
+        //    {
+        //        id = 2,
+        //        Nombre = "Cuenta Vista",
+        //        idCuenta = 155
+        //    });
+
+        //    var list = new SelectList(cuentas, "idCuenta");
+        //    ViewData["cuentas"] = list;
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public ActionResult seleccionarCuenta(int cuenta)
+        //{
+        //    return View();
+        //}
+
     }
 }
 

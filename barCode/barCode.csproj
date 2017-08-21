@@ -205,6 +205,8 @@
     <Compile Include="Models\Region.cs">
       <DependentUpon>barCode.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Seleccionar.cs" />
+    <Compile Include="Models\UsuarioBanco.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -4,14 +4,14 @@
 }
 
 <h2 style="color:white">Realizar Pago</h2>
-
 <h5 style="color:white">Detalle de Pago:</h5>
 
-@*<select id="idCuenta" class="form-control">
-    <option>Cuenta Corriente</option>
-    <option>Cuenta Vista</option>
-    <option>Cuenta de Ahorro</option>
-</select>*@
+@*@Html.DropDownList("cuentas", ViewData["cuentas"] as SelectList)*@
+
+<select id="cuentas" class="form-control" name="cuentas">
+    <option value="154">Cuenta Corriente</option>
+    <option value="155">Cuenta Vista</option>    
+</select>
 
 <p></p>
 
@@ -43,7 +43,9 @@
         </tr>
     </tfoot>
 </table>
+
 <p></p>
+
 @if (Session["Usuario"] == null)
 {
     <a class="btn btn-info" href="/Login/Index">Pagar</a>
@@ -56,7 +58,7 @@ else
 
 <script>
     function enviarMonto(monto) {
-        EjecutarAjax("/BancoFalso/Pagar", ["monto"], [monto],
+        EjecutarAjax("/BancoFalso/Pagar", ["monto", "cuenta"], [monto, cuenta],
             function (success) {
                 if (success) {
                     window.location.href = "../BancoFalso/PagoOk";
