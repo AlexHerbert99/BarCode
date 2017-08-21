@@ -34,8 +34,7 @@
       <PropertyRef Name="IdCategoria" />
     </Key>
     <Property Name="IdCategoria" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Nacionales" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="Internacionales" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Categoria" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
   <EntityType Name="Cliente">
     <Key>

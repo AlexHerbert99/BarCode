@@ -63,7 +63,7 @@ namespace barCode.Controllers
             return Json(rc, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult Pagar(string monto)
+        public JsonResult Pagar(string monto, string cuenta)
         {
             WebClient wc = new WebClient();
             NameValueCollection nvc = new NameValueCollection();
@@ -71,7 +71,7 @@ namespace barCode.Controllers
             nvc.Add("monto", monto);
             nvc.Add("descripcion", "Compra en Barcode");
             nvc.Add("idPedido", "10");
-            nvc.Add("idCuenta", "155");
+            nvc.Add("idCuenta", cuenta);
 
             byte[] result = wc.UploadValues(urlbase + "Pagar", nvc);
             string JsonResult = Encoding.UTF8.GetString(result);
@@ -84,10 +84,10 @@ namespace barCode.Controllers
             WebClient wc = new WebClient();
             NameValueCollection nvc = new NameValueCollection();
             nvc.Add("apikey", apik);
-            nvc.Add("descripcion", "Anulacion de compra");
-            nvc.Add("idPedido", "5005");
-            nvc.Add("idCuenta", "154");
-            nvc.Add("monto", "50000");
+            nvc.Add("descripcion", descripcion);
+            nvc.Add("idPedido", idPedido);
+            nvc.Add("idCuenta", idCuenta);
+            nvc.Add("monto", monto);
 
             byte[] result = wc.UploadValues(urlbase + "Anular", nvc);
             string JsonResult = Encoding.UTF8.GetString(result);

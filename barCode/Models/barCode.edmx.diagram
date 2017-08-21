@@ -5,9 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="3046798141824494a2b1b33f577cb19b" Name="Diagram1">
-        <EntityTypeShape EntityType="barCodePruebaModel.Administradores" Width="1.5" PointX="0.5" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="barCodePruebaModel.Administradores" Width="1.5" PointX="0.5" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="barCodePruebaModel.Boleta" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="barCodePruebaModel.Categoria" Width="1.5" PointX="7.625" PointY="12.375" IsExpanded="true" />
         <EntityTypeShape EntityType="barCodePruebaModel.Cliente" Width="1.5" PointX="8.875" PointY="3.25" IsExpanded="true" />
         <EntityTypeShape EntityType="barCodePruebaModel.Comuna" Width="1.5" PointX="6" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="barCodePruebaModel.Cuentas" Width="1.5" PointX="0.625" PointY="4" IsExpanded="true" />
@@ -19,7 +18,6 @@
         <AssociationConnector Association="barCodePruebaModel.FK_Boleta_Cliente" ManuallyRouted="false" />
         <AssociationConnector Association="barCodePruebaModel.FK_Boleta_Distribuidor" ManuallyRouted="false" />
         <AssociationConnector Association="barCodePruebaModel.FK_Boleta_MediosdePago" ManuallyRouted="false" />
-        <AssociationConnector Association="barCodePruebaModel.FK_Producto_Categoria" ManuallyRouted="false" />
         <AssociationConnector Association="barCodePruebaModel.FK_Direccion_Cliente" ManuallyRouted="false" />
         <AssociationConnector Association="barCodePruebaModel.FK_Comuna_Region" ManuallyRouted="false" />
         <AssociationConnector Association="barCodePruebaModel.FK_Direccion_Comuna" ManuallyRouted="false" />
@@ -28,6 +26,8 @@
         <AssociationConnector Association="barCodePruebaModel.FK_Boleta_DetalleCompra" />
         <AssociationConnector Association="barCodePruebaModel.FK_HistorialCompras_Cliente" />
         <AssociationConnector Association="barCodePruebaModel.FK_DetalleCompra_Producto" />
+        <EntityTypeShape EntityType="barCodePruebaModel.Categoria" Width="1.5" PointX="2.25" PointY="14.25" />
+        <AssociationConnector Association="barCodePruebaModel.FK_Producto_Categoria" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

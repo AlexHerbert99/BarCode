@@ -32,15 +32,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Categoria">
-      <EntityTypeMapping TypeName="barCodePruebaModel.Categoria">
-        <MappingFragment StoreEntitySet="Categoria">
-          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
-          <ScalarProperty Name="Nacionales" ColumnName="Nacionales" />
-          <ScalarProperty Name="Internacionales" ColumnName="Internacionales" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Cliente">
       <EntityTypeMapping TypeName="barCodePruebaModel.Cliente">
         <MappingFragment StoreEntitySet="Cliente">
@@ -135,6 +126,14 @@
           <ScalarProperty Name="FechaCompra" ColumnName="FechaCompra" />
           <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
           <ScalarProperty Name="IdRegistro" ColumnName="IdRegistro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categoria">
+      <EntityTypeMapping TypeName="barCodePruebaModel.Categoria">
+        <MappingFragment StoreEntitySet="Categoria">
+          <ScalarProperty Name="Categoria1" ColumnName="Categoria" />
+          <ScalarProperty Name="IdCategoria" ColumnName="IdCategoria" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

@@ -34,15 +34,6 @@
     <NavigationProperty Name="Cuentas" Relationship="Self.FK_Boleta_MediosdePago" FromRole="Boleta" ToRole="Cuentas" />
     <NavigationProperty Name="Detalle1" Relationship="barCodePruebaModel.FK_Boleta_DetalleCompra" FromRole="Boleta" ToRole="Detalle" />
   </EntityType>
-  <EntityType Name="Categoria">
-    <Key>
-      <PropertyRef Name="IdCategoria" />
-    </Key>
-    <Property Name="IdCategoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Nacionales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="Internacionales" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-    <NavigationProperty Name="Producto" Relationship="Self.FK_Producto_Categoria" FromRole="Categoria" ToRole="Producto" />
-  </EntityType>
   <EntityType Name="Cliente">
     <Key>
       <PropertyRef Name="IdCliente" />
@@ -116,8 +107,8 @@
     <Property Name="Descripcion" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
     <Property Name="Eliminado" Type="Boolean" />
     <Property Name="Grado" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Categoria" Relationship="Self.FK_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
     <NavigationProperty Name="Detalle" Relationship="barCodePruebaModel.FK_DetalleCompra_Producto" FromRole="Producto" ToRole="Detalle" />
+    <NavigationProperty Name="Categoria" Relationship="barCodePruebaModel.FK_Producto_Categoria" FromRole="Producto" ToRole="Categoria" />
   </EntityType>
   <EntityType Name="Region">
     <Key>
@@ -175,18 +166,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Producto_Categoria">
-    <End Role="Categoria" Type="Self.Categoria" Multiplicity="1" />
-    <End Role="Producto" Type="Self.Producto" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Categoria">
-        <PropertyRef Name="IdCategoria" />
-      </Principal>
-      <Dependent Role="Producto">
-        <PropertyRef Name="IdCategoria" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Direccion_Cliente">
     <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
     <End Role="Direccion" Type="Self.Direccion" Multiplicity="*" />
@@ -226,7 +205,6 @@
   <EntityContainer Name="barCodePruebaEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Administradores" EntityType="Self.Administradores" />
     <EntitySet Name="Boleta" EntityType="Self.Boleta" />
-    <EntitySet Name="Categoria" EntityType="Self.Categoria" />
     <EntitySet Name="Cliente" EntityType="Self.Cliente" />
     <EntitySet Name="Comuna" EntityType="Self.Comuna" />
     <EntitySet Name="Cuentas" EntityType="Self.Cuentas" />
@@ -249,10 +227,6 @@
     <AssociationSet Name="FK_Boleta_MediosdePago" Association="Self.FK_Boleta_MediosdePago">
       <End Role="Cuentas" EntitySet="Cuentas" />
       <End Role="Boleta" EntitySet="Boleta" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Producto_Categoria" Association="Self.FK_Producto_Categoria">
-      <End Role="Categoria" EntitySet="Categoria" />
-      <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
     <AssociationSet Name="FK_Direccion_Cliente" Association="Self.FK_Direccion_Cliente">
       <End Role="Cliente" EntitySet="Cliente" />
@@ -279,6 +253,11 @@
     <AssociationSet Name="FK_DetalleCompra_Producto" Association="barCodePruebaModel.FK_DetalleCompra_Producto">
       <End Role="Producto" EntitySet="Producto" />
       <End Role="Detalle" EntitySet="Detalle" />
+    </AssociationSet>
+    <EntitySet Name="Categoria" EntityType="barCodePruebaModel.Categoria" />
+    <AssociationSet Name="FK_Producto_Categoria" Association="barCodePruebaModel.FK_Producto_Categoria">
+      <End Role="Categoria" EntitySet="Categoria" />
+      <End Role="Producto" EntitySet="Producto" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Detalle">
@@ -334,6 +313,26 @@
       </Principal>
       <Dependent Role="Detalle">
         <PropertyRef Name="IdProducto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Categoria">
+    <Key>
+      <PropertyRef Name="IdCategoria" />
+    </Key>
+    <Property Name="IdCategoria" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Categoria1" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Producto" Relationship="barCodePruebaModel.FK_Producto_Categoria" FromRole="Categoria" ToRole="Producto" />
+  </EntityType>
+  <Association Name="FK_Producto_Categoria">
+    <End Type="barCodePruebaModel.Categoria" Role="Categoria" Multiplicity="1" />
+    <End Type="barCodePruebaModel.Producto" Role="Producto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categoria">
+        <PropertyRef Name="IdCategoria" />
+      </Principal>
+      <Dependent Role="Producto">
+        <PropertyRef Name="IdCategoria" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

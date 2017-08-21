@@ -10,7 +10,7 @@
 
 <select id="cuentas" class="form-control" name="cuentas">
     <option value="154">Cuenta Corriente</option>
-    <option value="155">Cuenta Vista</option>    
+    <option value="155">Cuenta Vista</option>
 </select>
 
 <p></p>
@@ -27,7 +27,7 @@
     }
 
     @foreach (var item in Model)
-    {
+     {
         total += (double)(item.cantidad * item.Precio);
         <tr>           
             <td>@Html.DisplayFor(modelItem => item.NombreProd)</td>
@@ -35,7 +35,7 @@
             <td>@Html.DisplayFor(modelItem => item.cantidad)</td>
             <td>@String.Format("{0:C}", item.montoTotal)</td>           
         </tr>
-    }
+     }
     <tfoot>
         <tr>
             <th colspan="3">Total</th>
@@ -47,14 +47,23 @@
 <p></p>
 
 @if (Session["Usuario"] == null)
-{
+ {
     <a class="btn btn-info" href="/Login/Index">Pagar</a>
-}
+ }
 else
 {
-    <button class="btn btn-info" onclick="enviarMonto(@total)">Pagar</button>
+    <button class="btn btn-info" onclick="enviarMonto(@total, cuentas)">Pagar</button>
 }
 
+<hr />
+<h4 style="color:white">Anular una Compra</h4>
+<form action="/BancoFalso/anularCompra">
+    <input type="text" name="idPedido" placeholder="Numero de Pedido" class="form-control" /><p></p>
+    <input type="text" name="idCuenta" placeholder="Codigo de Cuenta" class="form-control" /><p></p>
+    <input type="text" name="descripcion" placeholder="Observacion" class="form-control" /><p></p>
+    <input type="text" name="monto" placeholder="Monto" class="form-control" /><p></p>
+    <input type="submit" value="Enviar" class="btn btn-info" />
+</form>
 
 <script>
     function enviarMonto(monto) {
